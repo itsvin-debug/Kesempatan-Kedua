@@ -1,33 +1,33 @@
-2026-01-27 04:51:38 UTC
+2026-04-02 05:36:54 UTC
 Windows-11-10.0.26200-SP0
 Ren'Py 8.5.2.26010301
 
-Early init took 36 ms
+Early init took 35 ms
 Loading error handling took 17 ms
-Loading script took 84 ms
-Loading save slot metadata took 26 ms
+Loading script took 112 ms
+Loading save slot metadata took 29 ms
 Loading persistent took 0 ms
-Running init code took 36 ms
-Loading analysis data took 5 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 21 ms
-Dump and make backups took 29 ms
+Running init code took 43 ms
+Loading analysis data took 3 ms
+Analyze and compile ATL took 2 ms
+Reloading save slot metadata took 18 ms
+Dump and make backups took 32 ms
 Cleaning cache took 0 ms
 Making clean stores took 0 ms
-Initial gc took 36 ms
+Initial gc took 25 ms
 DPI scale factor: 1.250000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
 Creating interface object took 2 ms
 Init translation took 0 ms
 Cleaning stores took 0 ms
-Load screen analysis took 20 ms
+Load screen analysis took 17 ms
 Analyze screens took 1 ms
 Save screen analysis took 0 ms
 Save pyanalysis took 0 ms
 Save bytecode took 0 ms
 Running _start took 1 ms
-Interface start took 203 ms
+Interface start took 291 ms
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1920, 1200)
@@ -37,100 +37,11 @@ Vendor: 'ATI Technologies Inc.'
 Renderer: 'AMD Radeon(TM) Graphics'
 Version: '4.6.0 Compatibility Profile Context 25.10.30.02.250923'
 Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 1920, 'current_h': 1200, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(958, 539) drawable=(958, 539)
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1111) drawable=(1920, 1111)
 Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 8 ms
-Loading error handling took 15 ms
-Loading script took 80 ms
-Loading save slot metadata took 22 ms
-Loading persistent took 0 ms
-Running init code took 41 ms
-Loading analysis data took 4 ms
-Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 21 ms
-Dump and make backups took 31 ms
-Cleaning cache took 0 ms
-Making clean stores took 1 ms
-Initial gc took 87 ms
-DPI scale factor: 1.250000
-Creating interface object took 0 ms
-Init translation took 1 ms
-Cleaning stores took 0 ms
-Load screen analysis took 19 ms
-Analyze screens took 1 ms
-Save screen analysis took 0 ms
-Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 1 ms
-Interface start took 242 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1200)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon(TM) Graphics'
-Version: '4.6.0 Compatibility Profile Context 25.10.30.02.250923'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 1920, 'current_h': 1200, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(958, 539) drawable=(958, 539)
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1111) drawable=(1920, 1111)
 Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 8 ms
-Loading error handling took 16 ms
-Loading script took 154 ms
-Loading save slot metadata took 22 ms
-Loading persistent took 0 ms
-
-File "game/script.rpy", line 2: expected statement.
-    d chapters = [
-               ^
-DPI scale factor: 1.250000
-Interface start took 129 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1200)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon(TM) Graphics'
-Version: '4.6.0 Compatibility Profile Context 25.10.30.02.250923'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 1920, 'current_h': 1200, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(958, 539) drawable=(958, 539)
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1111) drawable=(1920, 1111)
 Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 9 ms
-Loading error handling took 15 ms
-Loading script took 98 ms
-Loading save slot metadata took 22 ms
-Loading persistent took 0 ms
-Running init code took 39 ms
-Loading analysis data took 4 ms
-Analyze and compile ATL took 2 ms
-Reloading save slot metadata took 21 ms
-Dump and make backups took 32 ms
-Cleaning cache took 0 ms
-Making clean stores took 1 ms
-Initial gc took 72 ms
-DPI scale factor: 1.250000
-Creating interface object took 1 ms
-Init translation took 0 ms
-Cleaning stores took 0 ms
-Load screen analysis took 19 ms
-Analyze screens took 1 ms
-Save screen analysis took 0 ms
-Save pyanalysis took 0 ms
-Save bytecode took 0 ms
-Running _start took 2 ms
-Interface start took 269 ms
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1200)
-swap interval: 1 frames
-Windowed mode.
-Vendor: 'ATI Technologies Inc.'
-Renderer: 'AMD Radeon(TM) Graphics'
-Version: '4.6.0 Compatibility Profile Context 25.10.30.02.250923'
-Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 1920, 'current_h': 1200, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(958, 539) drawable=(958, 539)
+Screen sizes: virtual=(1920, 1080) physical=(1920, 1111) drawable=(1920, 1111)
 Maximum texture size: 4096x4096

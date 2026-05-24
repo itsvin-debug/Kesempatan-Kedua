@@ -4,6 +4,10 @@
 
 init offset = -1
 
+## Pastikan variabel persistent chapter sudah terdefinisi
+
+
+
 
 ################################################################################
 ## Gaya
@@ -96,25 +100,190 @@ style frame:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#say
 
+## Transform untuk panah speech bubble (kotak diputar 45 derajat)
+transform say_arrow_rotate:
+    rotate 45
+
 screen say(who, what):
 
-    window:
-        id "window"
+    ## Tentukan warna border dinamis berdasarkan nama karakter
+    $ dynamic_color = "#cc3355"  # Default: Merah muda/pink
+    if who == "kenzo":
+        $ dynamic_color = "#f83e00"  # Oren
+    elif who == "Lisa":
+        $ dynamic_color = "#e0407a"  # Pink cerah
+    elif who == "Satpam":
+        $ dynamic_color = "#4a6ae6"  # Biru
+    elif who == "Pak Agus":
+        $ dynamic_color = "#33cc55"  # Hijau
+    elif who == "narator":
+        $ dynamic_color = "#cc3355"  # Merah default narator
 
-        if who is not None:
+    if who is not None:
+        ## =====================================================
+        ## DIALOG KARAKTER — speech bubble + panah ke kiri
+        ## =====================================================
+        vbox:
+            xalign 0.5
+            yalign 0.68
+            xsize 960
+            spacing 0
 
+            ## Namebox di atas kotak dialog
             window:
                 id "namebox"
                 style "namebox"
+                background Solid(dynamic_color)
+                xalign 0.0
                 text who id "who"
 
-        text what id "what"
+            ## Dialog + Arrow dalam fixed container
+            fixed:
+                xsize 960
+                ysize 210
 
+                ## Panah balon dialog (rotasi 45°, menonjol dari kiri)
+                frame at say_arrow_rotate:
+                    xpos -14
+                    ypos 88
+                    xysize (28, 28)
+                    background Solid(dynamic_color)
 
-    ## Jika ada gambar di sisi, tampilkan di atas text. Jangan tampilkan di
-    ## versi HP[Handphone)(Android) - Karena tidak ada ruang.
-    if not renpy.variant("small"):
-        add SideImage() xalign 0.0 yalign 1.0
+                ## Window dialog utama
+                window:
+                    id "window"
+                    xpos 0
+                    xsize 940
+                    ysize 210
+
+                    has fixed
+
+                    ## Layer 1: border berwarna
+                    frame:
+                        xfill True
+                        yfill True
+                        background Solid(dynamic_color)
+
+                    ## Layer 2: area putih dalam
+                    frame:
+                        xfill True
+                        yfill True
+                        left_margin 12
+                        right_margin 12
+                        top_margin 12
+                        bottom_margin 12
+                        background Solid("#fffdf9")
+                        padding (45, 28, 45, 28)
+
+                        text what id "what"
+
+                    ## Dekorasi tiga kotak pojok kanan atas
+                    hbox:
+                        xalign 1.0
+                        yalign 0.0
+                        xoffset -18
+                        yoffset 18
+                        spacing 8
+
+                        frame:
+                            xysize (22, 22)
+                            background Solid("#fffdf9")
+                        frame:
+                            xysize (22, 22)
+                            background Solid("#fffdf9")
+                        frame:
+                            xysize (22, 22)
+                            background Solid("#fffdf9")
+
+    elif what == "" or what == " ":
+        ## =====================================================
+        ## FIX BUG FLASH HITAM: Saat ganti scene (transisi)
+        ## Ren'Py memanggil say screen kosong. Jangan render kotak apapun!
+        ## =====================================================
+        window:
+            id "window"
+            background None
+            text "" id "what"
+
+    else:
+        ## =====================================================
+        ## NARASI / TANPA KARAKTER — Desain Premium Kaca Gelap
+        ## =====================================================
+        window:
+            id "window"
+            xalign 0.5
+            yalign 0.45
+            xsize 800
+            ysize 200
+            background None  ## Pastikan window luar transparan
+
+            has fixed
+
+            ## Layer 1: Background Base (Gelap Navy sedikit transparan)
+            frame:
+                xfill True
+                yfill True
+                background Solid("#080814ee")
+                
+            ## Layer 2: Aksen Sudut (Bingkai tipis elegan)
+            frame:
+                xfill True
+                yfill True
+                background Solid("#00000000")
+                ## Garis atas
+                frame:
+                    xfill True
+                    ysize 1
+                    yalign 0.0
+                    background Solid("#ffffff30")
+                ## Garis bawah
+                frame:
+                    xfill True
+                    ysize 1
+                    yalign 1.0
+                    background Solid("#ffffff30")
+
+            ## Layer 3: Aksen kiri merah muda 
+            frame:
+                xysize (4, 150)
+                yalign 0.5
+                xpos 0
+                background Solid("#ff4b6e")
+
+            ## Layer 4: Aksen kanan merah muda (simetris)
+            frame:
+                xysize (4, 150)
+                yalign 0.5
+                xalign 1.0
+                background Solid("#ff4b6e")
+
+            ## Opsi Hiasan Header Kecil
+            text "◆    N  A  R  A  S  I    ◆":
+                color "#ffffff55"
+                size 12
+                bold True
+                xalign 0.5
+                ypos 18
+                kerning 2.0
+
+            ## Layer 5: Teks Narasi
+            ## Kita beri xpos dan ypos langsung di elemen ini agar PASTI tidak mepet kotak!
+            text what id "what":
+                style "say_narrator"
+                xpos 60
+                ypos 55
+                xsize 680
+
+    ## =========================================================
+    ## TOMBOL KE LOBBY — Pojok kanan atas layar
+    ## =========================================================
+    button:
+        action MainMenu(confirm=True)
+        align (0.98, 0.04)
+        xysize (155, 45)
+        background Frame(Transform(Solid("#ffffff33")), 15, 15)
+        hover_background Frame(Transform(Solid("#fb6e9ba8")), 15, 15)
+        text _("🏠 Ke Lobby") size 20 color "#ffffff" hover_color "#ffffff" align (0.5, 0.5)
 
 
 ## Buat namebox tersedia untuk mengatur gaya melalui objek karakter.
@@ -124,43 +293,66 @@ init python:
 style window is default
 style say_label is default
 style say_dialogue is default
-style say_thought is say_dialogue
+style say_thought is default
+style say_narrator is default
 
 style namebox is default
 style namebox_label is say_label
 
 
 style window:
-    xalign 0.5
-    xfill True
-    yalign gui.textbox_yalign
-    ysize gui.textbox_height
-
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    xfill False
+    xsize 940
+    ysize 210
+    padding (0, 0, 0, 0)
+    background None  ## Transparan — mencegah gui/window.png flash saat ganti dialog
 
 style namebox:
-    xpos gui.name_xpos
-    xanchor gui.name_xalign
-    xsize gui.namebox_width
-    ypos gui.name_ypos
-    ysize gui.namebox_height
-
-    background Frame("gui/namebox.png", gui.namebox_borders, tile=gui.namebox_tile, xalign=gui.name_xalign)
-    padding gui.namebox_borders.padding
+    xpos 0
+    xanchor 0.0
+    xsize None
+    ysize None
+    padding (30, 8, 30, 8)
 
 style say_label:
     properties gui.text_properties("name", accent=True)
-    xalign gui.name_xalign
+    xalign 0.0
     yalign 0.5
+    color "#ffffff"
+    bold True
+    size 24
 
 style say_dialogue:
     properties gui.text_properties("dialogue")
-
-    xpos gui.dialogue_xpos
-    xsize gui.dialogue_width
-    ypos gui.dialogue_ypos
-
+    color "#2a2a2a"
+    size 26
+    line_spacing 8
+    xpos 0
+    ypos 0
+    xsize 850
     adjust_spacing False
+
+## Gaya teks narasi — italic, warna terang, rata tengah
+## Posisi dan padding dihandle oleh FRAME di layar, bukan style ini
+style say_narrator:
+    color "#d5ddf5"
+    size 24
+    italic True
+    line_spacing 12
+    text_align 0.5
+    xalign 0.5
+    adjust_spacing False
+
+## Label watermark kecil pojok kanan bawah
+style say_narrator_label is default:
+    color "#ffffff18"
+    size 11
+    bold True
+    kerning 4.0
+    xalign 1.0
+    yalign 1.0
+    xoffset -16
+    yoffset -10
 
 ## Layar masukkan/input ########################################################
 ##
@@ -199,36 +391,121 @@ style input:
 
 ## Layar Pilihan ###############################################################
 ##
-## Layar ini digunakan untuk menampilkan pilihan dalam game yang disajikan oleh
-## menu statement. Satu parameter, item, adalah daftar objek, masing-masing
-## dengan bidang keterangan dan tindakan.
+## Desain premium: kartu glassmorphism dengan efek glow bercahaya saat hover.
+## Sesuai tema romance/drama SMA — warna pink-merah dengan border shimmer.
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#choice
 
+## Animasi transform: efek geser + glow saat hover
+transform choice_idle_anim:
+    on idle:
+        easein 0.18 xoffset 0 alpha 0.82
+
+transform choice_hover_anim:
+    on idle:
+        easein 0.18 xoffset 0 alpha 0.82
+    on hover:
+        easein 0.18 xoffset 10 alpha 1.0
+
 screen choice(items):
-    style_prefix "choice"
+    ## Overlay gelap semi-transparan di balik pilihan agar lebih fokus
+    add Solid("#00000055")
 
     vbox:
-        for i in items:
-            textbutton i.caption action i.action
+        align (0.5, 0.5)
+        spacing 0
+
+        ## Header pilihan
+        hbox:
+            xalign 0.5
+            spacing 16
+            text "◆" color "#e07090" size 18 yalign 0.5
+            text "P I L I H A N" color "#f5c0d0" size 20 bold True yalign 0.5 kerning 3.0
+            text "◆" color "#e07090" size 18 yalign 0.5
+
+        null height 22
+
+        ## Kartu-kartu pilihan
+        vbox:
+            xalign 0.5
+            spacing 16
+
+            for i in items:
+                ## Setiap pilihan = kartu dengan efek hover
+                button at choice_hover_anim:
+                    action i.action
+                    xsize 720
+                    ysize 75
+
+                    ## Latar default: kaca gelap semi-transparan
+                    background Frame(
+                        Solid("#1a0a1288"),
+                        15, 15
+                    )
+
+                    ## Glow bercahaya saat hover
+                    hover_background Frame(
+                        Solid("#cc335544"),
+                        15, 15
+                    )
+
+                    ## Foreground: border glow shimmer saat hover
+                    foreground Frame(
+                        Solid("#00000000"),
+                        15, 15
+                    )
+                    hover_foreground Frame(
+                        Solid("#ff408020"),
+                        15, 15
+                    )
+
+                    padding (30, 0, 30, 0)
+
+                    ## Isi kartu: ikon + teks
+                    hbox:
+                        yalign 0.5
+                        spacing 18
+
+                        ## Garis aksen kiri (selalu ada)
+                        frame:
+                            xysize (5, 44)
+                            background Solid("#cc335599")
+                            hover_background Solid("#ff6090")
+                            yalign 0.5
+
+                        ## Ikon berlian (muncul saat hover via alpha)
+                        text "❯" color "#e0709088" hover_color "#ff8aaa" size 22 yalign 0.5
+
+                        ## Teks pilihan
+                        text i.caption:
+                            color "#f0d0da"
+                            hover_color "#ffffff"
+                            size 26
+                            bold False
+                            yalign 0.5
+                            font gui.text_font
 
 
+## Style minimal — layout diatur manual di screen di atas
 style choice_vbox is vbox
 style choice_button is button
 style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 405
-    yanchor 0.5
-
-    spacing gui.choice_spacing
+    yalign 0.5
+    spacing 16
 
 style choice_button is default:
-    properties gui.button_properties("choice_button")
+    xsize 720
+    ysize 75
 
 style choice_button_text is default:
-    properties gui.text_properties("choice_button")
+    color "#f0d0da"
+    hover_color "#ffffff"
+    size 26
+    xalign 0.0
+    yalign 0.5
 
 
 ## Layar Menu Cepat/Quick Menu #################################################
@@ -240,6 +517,11 @@ screen quick_menu():
 
     ## Memastikan ini muncul di atas layar yang lain.
     zorder 100
+
+    if _preferences.language == "english":
+        key "t" action Language(None)
+    else:
+        key "t" action Language("english")
 
     if quick_menu:
 
@@ -298,7 +580,7 @@ screen navigation():
 
         else:
 
-            textbutton _("Chapter") action ShowMenu("chapter_menu")
+            textbutton _("Chapter") action Show("chapter_menu")
 
         textbutton _("Setting") action ShowMenu("preferences")
 
@@ -341,60 +623,135 @@ style navigation_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
+transform menu_btn_anim:
+    on idle:
+        easein 0.15 xoffset 0 alpha 0.8 zoom 1.0
+    on hover:
+        easein 0.15 xoffset 15 alpha 1.0 zoom 1.05
+
 screen main_menu():
 
-    ## Ini Memastikan Layar Menu Yang Lain Telah Di Timpa
     tag menu
 
-    add gui.main_menu_background
+    add Transform(gui.main_menu_background, xysize=(1920, 1080))
 
-    ## Frame kosong ini menggelap di menu utama.
     frame:
-        style "main_menu_frame"
-
-    ## Pernyataan 'use' mengikutsertakan layar lain ke layar ini. Isi sebenarnya
-    ## dari menu utama adalah layar navigasi.
-    use navigation
-
-    if gui.show_name:
-
+        xpos 120
+        ypos 280
+        xsize 380
+        ysize 540
+        # Glassmorphism panel background
+        background Transform(Solid("#ffffff0c"))
+        padding (30, 40)
+        
         vbox:
-            style "main_menu_vbox"
+            align (0.5, 0.5)
+            spacing 30
+            
+            button at menu_btn_anim:
+                action Start()
+                hover_background Frame(Transform(Solid("#ffffff1a"), zoom=1.05))
+                xsize 300
+                padding (15, 10)
+                hbox:
+                    spacing 20
+                    text "▶" font gui.text_font color "#00dfa4" size 24 yalign 0.5
+                    text _("Mulai") font gui.text_font color "#8fa2b4" hover_color "#ffffff" size 28 yalign 0.5
 
-            text "[config.name!t]":
-                style "main_menu_title"
+            button at menu_btn_anim:
+                action ShowMenu("chapter_menu")
+                hover_background Frame(Transform(Solid("#ffffff1a"), zoom=1.05))
+                xsize 300
+                padding (15, 10)
+                hbox:
+                    spacing 20
+                    text "📖" font gui.text_font color "#00dfa4" size 24 yalign 0.5
+                    text _("Chapter") font gui.text_font color "#8fa2b4" hover_color "#ffffff" size 28 yalign 0.5
 
-            text "[config.version]":
-                style "main_menu_version"
+            button at menu_btn_anim:
+                action ShowMenu("preferences")
+                hover_background Frame(Transform(Solid("#ffffff1a"), zoom=1.05))
+                xsize 300
+                padding (15, 10)
+                hbox:
+                    spacing 20
+                    text "⚙" font gui.text_font color "#00dfa4" size 24 yalign 0.5
+                    text _("Setting") font gui.text_font color "#8fa2b4" hover_color "#ffffff" size 28 yalign 0.5
 
+            button at menu_btn_anim:
+                action ShowMenu("about")
+                hover_background Frame(Transform(Solid("#ffffff1a"), zoom=1.05))
+                xsize 300
+                padding (15, 10)
+                hbox:
+                    spacing 20
+                    text "ℹ" font gui.text_font color "#00dfa4" size 24 yalign 0.5
+                    text _("Tentang") font gui.text_font color "#8fa2b4" hover_color "#ffffff" size 28 yalign 0.5
 
-style main_menu_frame is empty
-style main_menu_vbox is vbox
-style main_menu_text is gui_text
-style main_menu_title is main_menu_text
-style main_menu_version is main_menu_text
+            button at menu_btn_anim:
+                action ShowMenu("help")
+                hover_background Frame(Transform(Solid("#ffffff1a"), zoom=1.05))
+                xsize 300
+                padding (15, 10)
+                hbox:
+                    spacing 20
+                    text "❓" font gui.text_font color "#00dfa4" size 24 yalign 0.5
+                    text _("Bantuan") font gui.text_font color "#8fa2b4" hover_color "#ffffff" size 28 yalign 0.5
 
-style main_menu_frame:
-    xsize 420
-    yfill True
+            button at menu_btn_anim:
+                action Quit(confirm=not main_menu)
+                hover_background Frame(Transform(Solid("#ffffff1a"), zoom=1.05))
+                xsize 300
+                padding (15, 10)
+                hbox:
+                    spacing 20
+                    text "🚪" font gui.text_font color "#ff7676" size 24 yalign 0.5
+                    text _("Keluar") font gui.text_font color "#8fa2b4" hover_color "#ffffff" size 28 yalign 0.5
 
-    background "gui/dream1.jpg"
+    ## Language Selector / Ikon Negara di Lobby
+    vbox:
+        align (0.95, 0.05)
+        spacing 10
+        text _("Pilih Bahasa / Language:") size 15 color "#a0d8cc" bold True kerning 1.5 xalign 0.5
+        hbox:
+            xalign 0.5
+            spacing 15
+            
+            button:
+                action Language(None)  ## Bahasa Indonesia (Default)
+                xysize (60, 45)
+                background Frame(Solid("#ffffff22" if _preferences.language != None else "#cc3355ee"), 10, 10)
+                hover_background Frame(Solid("#cc3355aa"), 10, 10)
+                text "🇮🇩" size 26 align (0.5, 0.5)
 
-style main_menu_vbox:
-    xalign 1.0
-    xoffset -30
-    xmaximum 1200
-    yalign 1.0
-    yoffset -30
+            button:
+                action Language("english")  ## Bahasa Inggris
+                xysize (60, 45)
+                background Frame(Solid("#ffffff22" if _preferences.language != "english" else "#3355ccee"), 10, 10)
+                hover_background Frame(Solid("#3355ccaa"), 10, 10)
+                text "🇬🇧" size 26 align (0.5, 0.5)
 
-style main_menu_text:
-    properties gui.text_properties("main_menu", accent=True)
+    vbox:
+        xalign 0.68
+        yalign 0.48
+        spacing 5
+        text "Dream" font gui.text_font size 180 color "#5df7d9" italic True align (0.5, 0.5)
+        text "WHERE MEMORIES FADE INTO STARLIGHT" font gui.text_font size 22 kerning 6.0 color "#97a2ad" align (0.5, 0.5)
 
-style main_menu_title:
-    properties gui.text_properties("title")
+    vbox:
+        xpos 1660
+        ypos 940
+        text "DREAM" font gui.text_font size 48 color "#00dfa4" kerning 8.0 align (1.0, 1.0)
+        text "VER [config.version]" font gui.text_font size 18 kerning 3.0 color "#97a2ad" align (1.0, 1.0)
 
-style main_menu_version:
-    properties gui.text_properties("version")
+    button:
+        action NullAction()
+        xpos 1750
+        ypos 60
+        background Transform(Solid("#ffffff1a"))
+        padding (10, 10)
+        xysize (65, 65)
+        text "🌙" size 30 color "#ffffff" align (0.5, 0.5)
 
 
 ## layar Menu Permainan ########################################################
@@ -412,9 +769,9 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
     style_prefix "game_menu"
 
     if main_menu:
-        add gui.main_menu_background
+        add Transform(gui.main_menu_background, xysize=(1920, 1080))
     else:
-        add gui.game_menu_background
+        add Transform(gui.game_menu_background, xysize=(1920, 1080))
 
     frame:
         style "game_menu_outer_frame"
@@ -465,7 +822,8 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
                     transclude
 
-    use navigation
+    # use navigation dihapus sesuai permintaan agar tidak ada double menu
+    # use navigation
 
     textbutton _("Kembali"):
         style "return_button"
@@ -578,9 +936,6 @@ screen save():
     tag menu
     use chapter_menu
 
-
-
-
 screen load():
 
     tag menu
@@ -635,79 +990,335 @@ screen preferences():
     use game_menu(_("Setting"), scroll="viewport"):
 
         vbox:
+            xfill True
+            spacing 28
 
+            ## ─── BARIS 1: Tampilan + Skip + Otomatis Maju ───────────────────
             hbox:
-                box_wrap True
+                xfill True
+                spacing 24
 
+                ## === Kartu: Tampilan ===
                 if renpy.variant("pc") or renpy.variant("web"):
+                    frame:
+                        xsize 300
+                        ysize 160
+                        padding (20, 16, 20, 16)
+                        background Frame(Solid("#071520"), 14, 14)
+
+                        vbox:
+                            spacing 12
+
+                            hbox:
+                                spacing 8
+                                text "🖥" size 17 yalign 0.5
+                                text _("TAMPILAN"):
+                                    size 15
+                                    color "#00dfa4"
+                                    bold True
+                                    kerning 2.0
+                                    yalign 0.5
+
+                            frame:
+                                xfill True
+                                ysize 1
+                                background Solid("#00dfa430")
+
+                            hbox:
+                                spacing 10
+
+                                textbutton _("Jendela"):
+                                    action Preference("display", "window")
+                                    xsize 116
+                                    ysize 42
+                                    background Frame(Solid("#0d2030"), 8, 8)
+                                    hover_background Frame(Solid("#003d2a"), 8, 8)
+                                    selected_background Frame(Solid("#00dfa440"), 8, 8)
+                                    text_color "#7ab8cc"
+                                    text_hover_color "#00dfa4"
+                                    text_selected_color "#00dfa4"
+                                    text_size 16
+                                    text_yalign 0.5
+                                    text_xalign 0.5
+
+                                textbutton _("Layar Penuh"):
+                                    action Preference("display", "fullscreen")
+                                    xsize 116
+                                    ysize 42
+                                    background Frame(Solid("#0d2030"), 8, 8)
+                                    hover_background Frame(Solid("#003d2a"), 8, 8)
+                                    selected_background Frame(Solid("#00dfa440"), 8, 8)
+                                    text_color "#7ab8cc"
+                                    text_hover_color "#00dfa4"
+                                    text_selected_color "#00dfa4"
+                                    text_size 16
+                                    text_yalign 0.5
+                                    text_xalign 0.5
+
+                ## === Kartu: Lompati Dialog ===
+                frame:
+                    xsize 420
+                    ysize 160
+                    padding (20, 16, 20, 16)
+                    background Frame(Solid("#071520"), 14, 14)
 
                     vbox:
-                        style_prefix "radio"
-                        label _("Tampilan")
-                        textbutton _("Jendela") action Preference("display", "window")
-                        textbutton _("Layar Penuh") action Preference("display", "fullscreen")
+                        spacing 12
 
-                vbox:
-                    style_prefix "check"
-                    label _("Lompati")
-                    textbutton _("Belum Terlihat") action Preference("skip", "toggle")
-                    textbutton _("Setelah Pilihan") action Preference("after choices", "toggle")
-                    textbutton _("Transisi") action InvertSelected(Preference("transitions", "toggle"))
+                        hbox:
+                            spacing 8
+                            text "⏩" size 17 yalign 0.5
+                            text _("LOMPATI DIALOG"):
+                                size 15
+                                color "#00dfa4"
+                                bold True
+                                kerning 2.0
+                                yalign 0.5
 
-                ## Tipe tambahan vboxes "radio_pref" atau "check_pref" dapat di
-                ## tambahkan disini, untuk menambahkan tambahan preferensi yang
-                ## dibuat creator.
+                        frame:
+                            xfill True
+                            ysize 1
+                            background Solid("#00dfa430")
 
-            null height (4 * gui.pref_spacing)
+                        hbox:
+                            spacing 10
 
+                            textbutton _("Belum Terlihat"):
+                                action Preference("skip", "toggle")
+                                xsize 170
+                                ysize 42
+                                background Frame(Solid("#0d2030"), 8, 8)
+                                hover_background Frame(Solid("#003d2a"), 8, 8)
+                                selected_background Frame(Solid("#00dfa440"), 8, 8)
+                                text_color "#7ab8cc"
+                                text_hover_color "#00dfa4"
+                                text_selected_color "#00dfa4"
+                                text_size 15
+                                text_yalign 0.5
+                                text_xalign 0.5
+
+                            textbutton _("Setelah Pilihan"):
+                                action Preference("after choices", "toggle")
+                                xsize 170
+                                ysize 42
+                                background Frame(Solid("#0d2030"), 8, 8)
+                                hover_background Frame(Solid("#003d2a"), 8, 8)
+                                selected_background Frame(Solid("#00dfa440"), 8, 8)
+                                text_color "#7ab8cc"
+                                text_hover_color "#00dfa4"
+                                text_selected_color "#00dfa4"
+                                text_size 15
+                                text_yalign 0.5
+                                text_xalign 0.5
+
+                ## === Kartu: Otomatis Maju ===
+                frame:
+                    xsize 280
+                    ysize 160
+                    padding (20, 16, 20, 16)
+                    background Frame(Solid("#071520"), 14, 14)
+
+                    vbox:
+                        spacing 12
+
+                        hbox:
+                            spacing 8
+                            text "▶▶" size 15 color "#00dfa4" yalign 0.5
+                            text _("OTOMATIS MAJU"):
+                                size 15
+                                color "#00dfa4"
+                                bold True
+                                kerning 2.0
+                                yalign 0.5
+
+                        frame:
+                            xfill True
+                            ysize 1
+                            background Solid("#00dfa430")
+
+                        textbutton _("Aktifkan / Nonaktifkan"):
+                            action Preference("auto-forward", "toggle")
+                            xsize 234
+                            ysize 42
+                            background Frame(Solid("#0d2030"), 8, 8)
+                            hover_background Frame(Solid("#003d2a"), 8, 8)
+                            selected_background Frame(Solid("#00dfa440"), 8, 8)
+                            text_color "#7ab8cc"
+                            text_hover_color "#00dfa4"
+                            text_selected_color "#00dfa4"
+                            text_size 14
+                            text_yalign 0.5
+                            text_xalign 0.5
+
+            ## ─── BARIS 2: Kecepatan Text + Waktu Auto-Forward ───────────────
             hbox:
-                style_prefix "slider"
-                box_wrap True
+                xfill True
+                spacing 24
+
+                ## === Kartu: Kecepatan Text ===
+                frame:
+                    xsize 490
+                    ysize 112
+                    padding (20, 14, 20, 14)
+                    background Frame(Solid("#071520"), 14, 14)
+
+                    vbox:
+                        spacing 10
+
+                        hbox:
+                            spacing 8
+                            text "✏" size 16 yalign 0.5
+                            text _("KECEPATAN TEXT"):
+                                size 15
+                                color "#00dfa4"
+                                bold True
+                                kerning 2.0
+                                yalign 0.5
+
+                        frame:
+                            xfill True
+                            ysize 1
+                            background Solid("#00dfa430")
+
+                        bar:
+                            value Preference("text speed")
+                            xsize 448
+                            ysize 24
+
+                ## === Kartu: Waktu Otomatis-Maju ===
+                frame:
+                    xsize 490
+                    ysize 112
+                    padding (20, 14, 20, 14)
+                    background Frame(Solid("#071520"), 14, 14)
+
+                    vbox:
+                        spacing 10
+
+                        hbox:
+                            spacing 8
+                            text "⏱" size 16 yalign 0.5
+                            text _("WAKTU OTOMATIS-MAJU"):
+                                size 15
+                                color "#00dfa4"
+                                bold True
+                                kerning 2.0
+                                yalign 0.5
+
+                        frame:
+                            xfill True
+                            ysize 1
+                            background Solid("#00dfa430")
+
+                        bar:
+                            value Preference("auto-forward time")
+                            xsize 448
+                            ysize 24
+
+            ## ─── BARIS 3: Panel Audio ───────────────────────────────────────
+            frame:
+                xfill True
+                ysize 216
+                padding (24, 18, 24, 18)
+                background Frame(Solid("#071520"), 14, 14)
 
                 vbox:
+                    xfill True
+                    spacing 14
 
-                    label _("Kecepatan Text")
+                    hbox:
+                        spacing 8
+                        text "🎵" size 17 yalign 0.5
+                        text _("PENGATURAN AUDIO"):
+                            size 15
+                            color "#00dfa4"
+                            bold True
+                            kerning 2.0
+                            yalign 0.5
 
-                    bar value Preference("text speed")
+                    frame:
+                        xfill True
+                        ysize 1
+                        background Solid("#00dfa430")
 
-                    label _("Waktu Otomatis-Maju")
+                    hbox:
+                        xfill True
+                        spacing 32
 
-                    bar value Preference("auto-forward time")
+                        ## Volume Musik
+                        if config.has_music:
+                            vbox:
+                                xsize 290
+                                spacing 8
 
-                vbox:
+                                hbox:
+                                    spacing 6
+                                    text "🎶" size 15 yalign 0.5
+                                    text _("Volume Musik"):
+                                        size 16
+                                        color "#a0d8cc"
+                                        yalign 0.5
 
-                    if config.has_music:
-                        label _("Volume Musik")
+                                bar:
+                                    value Preference("music volume")
+                                    xsize 290
+                                    ysize 24
 
-                        hbox:
-                            bar value Preference("music volume")
+                        ## Volume Suara (SFX)
+                        if config.has_sound:
+                            vbox:
+                                xsize 290
+                                spacing 8
 
-                    if config.has_sound:
+                                hbox:
+                                    spacing 6
+                                    text "🔊" size 15 yalign 0.5
+                                    text _("Volume Suara"):
+                                        size 16
+                                        color "#a0d8cc"
+                                        yalign 0.5
 
-                        label _("Volume Suara")
+                                bar:
+                                    value Preference("sound volume")
+                                    xsize 290
+                                    ysize 24
 
-                        hbox:
-                            bar value Preference("sound volume")
+                        ## Volume Vokal (hanya jika game punya voice acting)
+                        if config.has_voice:
+                            vbox:
+                                xsize 290
+                                spacing 8
 
-                            if config.sample_sound:
-                                textbutton _("Tes") action Play("sound", config.sample_sound)
+                                hbox:
+                                    spacing 6
+                                    text "🎙" size 15 yalign 0.5
+                                    text _("Volume Vokal"):
+                                        size 16
+                                        color "#a0d8cc"
+                                        yalign 0.5
 
-
-                    if config.has_voice:
-                        label _("Volume Vokal")
-
-                        hbox:
-                            bar value Preference("voice volume")
-
-                            if config.sample_voice:
-                                textbutton _("Tes") action Play("voice", config.sample_voice)
+                                bar:
+                                    value Preference("voice volume")
+                                    xsize 290
+                                    ysize 24
 
                     if config.has_music or config.has_sound or config.has_voice:
-                        null height gui.pref_spacing
+                        hbox:
+                            xalign 1.0
 
-                        textbutton _("Senyapkan Semua"):
-                            action Preference("all mute", "toggle")
-                            style "mute_all_button"
+                            textbutton _("🔇  Senyapkan Semua"):
+                                action Preference("all mute", "toggle")
+                                xsize 236
+                                ysize 40
+                                background Frame(Solid("#0d2030"), 8, 8)
+                                hover_background Frame(Solid("#003d2a"), 8, 8)
+                                selected_background Frame(Solid("#00dfa440"), 8, 8)
+                                text_color "#7ab8cc"
+                                text_hover_color "#00dfa4"
+                                text_selected_color "#00dfa4"
+                                text_size 15
+                                text_yalign 0.5
+                                text_xalign 0.5
 
 
 style pref_label is gui_label
@@ -874,9 +1485,23 @@ style history_label_text:
 
 ## Layar Bantuan ###############################################################
 ##
-## Layar yang memberikan informasi tentang keyboard dan mouse binding. Ini
-## menggunakan layar lain (keyboard_help, mouse_help, and gamepad_help) untuk
-## menampilkan bantuan yang sebenarnya.
+## Layar Bantuan yang didesain ulang dengan tema biru navy gelap premium.
+## Menampilkan panduan kontrol keyboard, mouse, dan informasi chapter.
+
+## Transisi tab bantuan
+transform help_tab_show:
+    on show:
+        alpha 0.0
+        linear 0.2 alpha 1.0
+    on hide:
+        linear 0.15 alpha 0.0
+
+## Animasi kartu bantuan
+transform help_card_hover:
+    on idle:
+        easein 0.2 yoffset 0 alpha 0.9
+    on hover:
+        easein 0.2 yoffset -4 alpha 1.0
 
 screen help():
 
@@ -884,130 +1509,532 @@ screen help():
 
     default device = "keyboard"
 
-    use game_menu(_("Bantuan"), scroll="viewport"):
+    ## Latar belakang — full navy gelap gradient
+    add Transform(gui.game_menu_background, xysize=(1920, 1080))
+    add Solid("#020d1aee")
 
-        style_prefix "help"
+    ## Panel utama tengah
+    frame:
+        xalign 0.5
+        yalign 0.5
+        xysize (1180, 780)
+        padding (0, 0)
+        background Frame(Solid("#040f1f"), 20, 20)
 
         vbox:
-            spacing 23
+            xfill True
+            yfill True
+            spacing 0
 
+            ## ─── HEADER ───────────────────────────────────────────────────
+            frame:
+                xfill True
+                ysize 90
+                padding (40, 0)
+                background Solid("#061629")
+
+                hbox:
+                    xfill True
+                    yalign 0.5
+                    spacing 0
+
+                    ## Judul kiri
+                    vbox:
+                        yalign 0.5
+                        spacing 4
+                        hbox:
+                            spacing 12
+                            text "📘":
+                                size 28
+                                yalign 0.5
+                            text _("P A N D U A N"):
+                                size 28
+                                color "#4fc3f7"
+                                bold True
+                                kerning 6.0
+                                yalign 0.5
+                        text _("Cara bermain & kontrol game DREAM"):
+                            size 14
+                            color "#4fc3f780"
+                            kerning 1.0
+
+                    ## Spacer dorong tab ke kanan
+                    frame:
+                        xsize 1
+                        yfill True
+                        background Solid("#00000000")
+
+                    ## Tab navigasi (kanan header)
+                    hbox:
+                        yalign 0.5
+                        spacing 8
+
+                        ## Tab Keyboard
+                        button:
+                            action SetScreenVariable("device", "keyboard")
+                            xysize (148, 52)
+                            background Frame(
+                                Solid("#0e2a4a" if device != "keyboard" else "#1565c0"),
+                                10, 10
+                            )
+                            hover_background Frame(Solid("#1a4080"), 10, 10)
+                            hbox:
+                                align (0.5, 0.5)
+                                spacing 8
+                                text "⌨":
+                                    size 18
+                                    color ("#4fc3f7" if device == "keyboard" else "#4fc3f780")
+                                    yalign 0.5
+                                text _("Keyboard"):
+                                    size 15
+                                    color ("#ffffff" if device == "keyboard" else "#7ab8cc")
+                                    bold (device == "keyboard")
+                                    yalign 0.5
+
+                        ## Tab Mouse
+                        button:
+                            action SetScreenVariable("device", "mouse")
+                            xysize (120, 52)
+                            background Frame(
+                                Solid("#0e2a4a" if device != "mouse" else "#1565c0"),
+                                10, 10
+                            )
+                            hover_background Frame(Solid("#1a4080"), 10, 10)
+                            hbox:
+                                align (0.5, 0.5)
+                                spacing 8
+                                text "🖱":
+                                    size 18
+                                    color ("#4fc3f7" if device == "mouse" else "#4fc3f780")
+                                    yalign 0.5
+                                text _("Mouse"):
+                                    size 15
+                                    color ("#ffffff" if device == "mouse" else "#7ab8cc")
+                                    bold (device == "mouse")
+                                    yalign 0.5
+
+                        ## Tab Chapter
+                        button:
+                            action SetScreenVariable("device", "chapter")
+                            xysize (140, 52)
+                            background Frame(
+                                Solid("#0e2a4a" if device != "chapter" else "#1565c0"),
+                                10, 10
+                            )
+                            hover_background Frame(Solid("#1a4080"), 10, 10)
+                            hbox:
+                                align (0.5, 0.5)
+                                spacing 8
+                                text "📖":
+                                    size 18
+                                    color ("#4fc3f7" if device == "chapter" else "#4fc3f780")
+                                    yalign 0.5
+                                text _("Chapter"):
+                                    size 15
+                                    color ("#ffffff" if device == "chapter" else "#7ab8cc")
+                                    bold (device == "chapter")
+                                    yalign 0.5
+
+            ## Garis pemisah bawah header
+            frame:
+                xfill True
+                ysize 2
+                background Solid("#1565c060")
+
+            ## ─── KONTEN ────────────────────────────────────────────────────
+            frame:
+                xfill True
+                yfill True
+                padding (36, 28, 36, 28)
+                background Solid("#040f1f")
+
+                if device == "keyboard":
+                    use keyboard_help_new
+                elif device == "mouse":
+                    use mouse_help_new
+                elif device == "chapter":
+                    use chapter_help_new
+
+    ## Tombol Kembali
+    button:
+        action Return()
+        xpos 40
+        ypos 30
+        xysize (160, 48)
+        background Frame(Solid("#0e2a4a"), 12, 12)
+        hover_background Frame(Solid("#1565c0"), 12, 12)
+        hbox:
+            align (0.5, 0.5)
+            spacing 10
+            text "◀":
+                size 16
+                color "#4fc3f7"
+                yalign 0.5
+            text _("KEMBALI"):
+                size 15
+                color "#ffffff"
+                kerning 2.0
+                yalign 0.5
+
+
+## ─── KONFIGURASI KEYMAP: MENGHAPUS & MENAMBAH SHORTCUT ────────────────────────
+init 1 python:
+    ## Eksekusi ini di pass init yang lebih lambat agar menimpa config utama
+    
+    ## 1. Nonaktifkan fitur skip sepenuhnya (Ctrl dan Tab)
+    config.keymap['skip'] = []
+    config.keymap['toggle_skip'] = []
+    
+    ## 2. Nonaktifkan fitur sembunyikan UI (H)
+    config.keymap['hide_windows'] = ['mouseup_2']  ## sisakan klik tengah mouse
+    
+    ## 3. Nonaktifkan rollback dan rollforward (Page Up / Page Down)
+    config.keymap['rollback'] = ['mousedown_4', 'joy_rollback']
+    config.keymap['rollforward'] = ['mousedown_5', 'joy_rollforward']
+    
+    ## 4. Matikan Buka Menu dari keyboard (M / Esc / Klik Kanan) -- DIHAPUS FULL
+    config.keymap['game_menu'] = []
+
+    ## 5. Matikan Arrow Keys (Panah) untuk navigasi UI
+    config.keymap['focus_left'] = []
+    config.keymap['focus_right'] = []
+    config.keymap['focus_up'] = []
+    config.keymap['focus_down'] = []
+
+    ## 6. Matikan Quick Save (Q) & Quick Load (L)
+    config.keymap['quicksave'] = []
+    config.keymap['quickload'] = []
+
+    ## 7. Matikan Enter (Lanjutkan teks pakai klik/spasi saja)
+    config.keymap['dismiss'] = ['K_SPACE', 'mouseup_1', 'joy_dismiss']
+    config.keymap['button_select'] = ['K_SPACE', 'mouseup_1', 'joy_select']
+
+    ## 8. Matikan fitur suara narator otomatis (V)
+    config.keymap['self_voicing'] = []
+
+
+## ─── SUB LAYAR: Keyboard Help ─────────────────────────────────────────────────
+screen keyboard_help_new():
+
+    vbox:
+        xfill True
+        spacing 16
+
+        ## Deskripsi singkat
+        hbox:
+            spacing 8
+            text "⌨"  size 16 color "#4fc3f7" yalign 0.5
+            text _("SHORTCUT KEYBOARD"):
+                size 14
+                color "#4fc3f7"
+                bold True
+                kerning 3.0
+                yalign 0.5
+
+        frame:
+            xfill True
+            ysize 1
+            background Solid("#1565c050")
+
+        null height 4
+
+        ## Grid 2 kolom
+        hbox:
+            xfill True
+            spacing 16
+
+            ## Kolom kiri
+            vbox:
+                xsize 540
+                spacing 12
+
+                ## Baris tombol Kiri
+                for key_label, key_desc in [
+                    ("Space",         _("Lanjutkan dialog tanpa memilih pilihan")),
+                    ("F",             _("Mode Layar Penuh (Fullscreen)")),
+                    ("T",             _("Translate dialog ke Bahasa Inggris")),
+                ]:
+                    frame at help_card_hover:
+                        xfill True
+                        ysize 58
+                        padding (18, 0)
+                        background Frame(Solid("#071825"), 10, 10)
+                        hover_background Frame(Solid("#0a2040"), 10, 10)
+
+                        hbox:
+                            xfill True
+                            yalign 0.5
+                            spacing 0
+
+                            ## Key badge
+                            frame:
+                                xsize 148
+                                yalign 0.5
+                                padding (10, 6)
+                                background Frame(Solid("#0e2a4a"), 8, 8)
+                                text _(key_label):
+                                    size 14
+                                    color "#4fc3f7"
+                                    bold True
+                                    xalign 1.0
+                                    textalign 1.0
+
+                            null width 16
+
+                            ## Deskripsi
+                            text _(key_desc):
+                                size 15
+                                color "#c0d8ec"
+                                yalign 0.5
+
+            ## Kolom kanan
+            vbox:
+                xsize 540
+                spacing 12
+
+                for key_label, key_desc in [
+                    ("A",             _("Jalankan mode cerita otomatis (Auto)")),
+                    ("C",             _("Nyalakan Suara Pembaca dari Clipboard")),
+                    ("S",             _("Ambil tangkapan layar (screenshot game)")),
+                ]:
+                    frame at help_card_hover:
+                        xfill True
+                        ysize 58
+                        padding (18, 0)
+                        background Frame(Solid("#071825"), 10, 10)
+                        hover_background Frame(Solid("#0a2040"), 10, 10)
+
+                        hbox:
+                            xfill True
+                            yalign 0.5
+                            spacing 0
+
+                            frame:
+                                xsize 148
+                                yalign 0.5
+                                padding (10, 6)
+                                background Frame(Solid("#0e2a4a"), 8, 8)
+                                text key_label:
+                                    size 14
+                                    color "#4fc3f7"
+                                    bold True
+                                    xalign 1.0
+                                    textalign 1.0
+
+                            null width 16
+
+                            text _(key_desc):
+                                size 15
+                                color "#c0d8ec"
+                                yalign 0.5
+
+        ## Tips bawah
+        null height 8
+        frame:
+            xfill True
+            padding (18, 14)
+            background Frame(Solid("#061629"), 10, 10)
             hbox:
-
-                textbutton _("Papanketik") action SetScreenVariable("device", "keyboard")
-                textbutton _("Tetikus") action SetScreenVariable("device", "mouse")
-
-                if GamepadExists():
-                    textbutton _("Gamepad") action SetScreenVariable("device", "gamepad")
-
-            if device == "keyboard":
-                use keyboard_help
-            elif device == "mouse":
-                use mouse_help
-            elif device == "gamepad":
-                use gamepad_help
+                spacing 10
+                text "💡" size 16 yalign 0.5
+                text _("Tips: Tekan tombol {b}A{/b} untuk menyalakan mode otomatis agar cerita berjalan tanpa perlu diklik manual."):
+                    size 14
+                    color "#7ab8cc"
+                    yalign 0.5
 
 
-screen keyboard_help():
+## ─── SUB LAYAR: Mouse Help ────────────────────────────────────────────────────
+screen mouse_help_new():
 
-    hbox:
-        label _("Masukkan")
-        text _("Dialog tingkat lanjut dan mengaktifkan antarmuka.")
+    vbox:
+        xfill True
+        spacing 16
 
-    hbox:
-        label _("Spasi")
-        text _("Dialog tingkat lanjut tanpa memilih pilihan.")
+        hbox:
+            spacing 8
+            text "🖱"  size 16 color "#4fc3f7" yalign 0.5
+            text _("KONTROL MOUSE"):
+                size 14
+                color "#4fc3f7"
+                bold True
+                kerning 3.0
+                yalign 0.5
 
-    hbox:
-        label _("Tombol Panah")
-        text _("Navigasi di antarmuka")
+        frame:
+            xfill True
+            ysize 1
+            background Solid("#1565c050")
 
-    hbox:
-        label _("Melarikan diri")
-        text _("Akses menu permainan.")
+        null height 4
 
-    hbox:
-        label _("Ctrl")
-        text _("Lompati dialog ketika di tahan.")
+        ## Kartu mouse visual
+        hbox:
+            xalign 0.5
+            spacing 24
 
-    hbox:
-        label _("Tab")
-        text _("Nyala/Matikan lompati dialog.")
+            for icon, key_label, key_desc in [
+                ("🖱️",  _("Klik Kiri"),         _("Lanjutkan dialog\n& aktifkan pilihan")),
+                ("🖲️",  _("Klik Tengah"),       _("Sembunyikan\nantarmuka UI")),
+            ]:
+                frame at help_card_hover:
+                    xsize 196
+                    ysize 168
+                    padding (16, 18)
+                    background Frame(Solid("#071825"), 14, 14)
+                    hover_background Frame(Solid("#0a2040"), 14, 14)
 
-    hbox:
-        label _("Halaman Atas")
-        text _("Putar mundur ke dialog sebelumnya.")
+                    vbox:
+                        xalign 0.5
+                        spacing 10
 
-    hbox:
-        label _("Page Down")
-        text _("Putar maju ke dialog berikut.")
+                        text icon:
+                            size 36
+                            xalign 0.5
 
-    hbox:
-        label "H"
-        text _("Sembunyikan antarmuka.")
+                        frame:
+                            xalign 0.5
+                            padding (12, 6)
+                            background Frame(Solid("#0e2a4a"), 8, 8)
+                            text _(key_label):
+                                size 13
+                                color "#4fc3f7"
+                                bold True
+                                xalign 0.5
+                                textalign 0.5
 
-    hbox:
-        label "S"
-        text _("Ambiil tangkapan layar.")
+                        text _(key_desc):
+                            size 13
+                            color "#a0c8e0"
+                            xalign 0.5
+                            textalign 0.5
 
-    hbox:
-        label "V"
-        text _("Nyalakan assisten {a=https://www.renpy.org/l/voicing}suara-sendiri{/a}")
-
-    hbox:
-        label "Shift+A"
-        text _("Membuka menu aksesibilitas.")
-
-
-screen mouse_help():
-
-    hbox:
-        label _("Klik Kiri")
-        text _("Dialog tingkat lanjut dan mengaktifkan antarmuka.")
-
-    hbox:
-        label _("Klik Tengah")
-        text _("Sembunyikan antarmuka.")
-
-    hbox:
-        label _("Klik Kanan")
-        text _("Akses menu permainan.")
-
-    hbox:
-        label _("Roda Mouse Atas")
-        text _("Putar mundur ke dialog sebelumnya.")
-
-    hbox:
-        label _("Roda Mouse Bawah")
-        text _("Putar maju ke dialog berikut.")
+        null height 8
+        frame:
+            xfill True
+            padding (18, 14)
+            background Frame(Solid("#061629"), 10, 10)
+            hbox:
+                spacing 10
+                text "💡" size 16 yalign 0.5
+                text _("Tips: Klik kanan kapan saja selama gameplay untuk membuka menu simpan / muat dengan cepat."):
+                    size 14
+                    color "#7ab8cc"
+                    yalign 0.5
 
 
-screen gamepad_help():
+## ─── SUB LAYAR: Chapter Help ──────────────────────────────────────────────────
+screen chapter_help_new():
 
-    hbox:
-        label _("Trigger Kanan\nA/Tombol Bawah")
-        text _("Dialog tingkat lanjut dan mengaktifkan antarmuka.")
+    vbox:
+        xfill True
+        spacing 16
 
-    hbox:
-        label _("Trigger Kiri\nBahu Kiri")
-        text _("Putar mundur ke dialog sebelumnya.")
+        hbox:
+            spacing 8
+            text "📖"  size 16 color "#4fc3f7" yalign 0.5
+            text _("PANDUAN CHAPTER"):
+                size 14
+                color "#4fc3f7"
+                bold True
+                kerning 3.0
+                yalign 0.5
 
-    hbox:
-        label _("Pundak Kanan")
-        text _("Putar maju ke dialog berikut.")
+        frame:
+            xfill True
+            ysize 1
+            background Solid("#1565c050")
 
-    hbox:
-        label _("D-Pad, Stick")
-        text _("Navigasi di antarmuka")
+        null height 4
 
-    hbox:
-        label _("Start, Guide, B/Right Button")
-        text _("Akses menu permainan.")
+        ## Baris 1: 3 kartu info chapter
+        hbox:
+            xfill True
+            spacing 16
 
-    hbox:
-        label _("Y/Tombol Atas")
-        text _("Sembunyikan antarmuka.")
+            for ch_icon, ch_title, ch_desc in [("🔓", _("Chapter Terbuka"), _("Chapter yang sudah bisa\ndimainkan. Klik kartu\nuntuk mulai bermain.")), ("🔒", _("Chapter Terkunci"), _("Selesaikan chapter\nsebelumnya terlebih\ndahulu untuk membuka.")), ("✅", _("Chapter Selesai"), _("Chapter yang sudah\npernah kamu selesaikan.\nBisa dimainkan ulang."))]:
+                frame at help_card_hover:
+                    xsize 338
+                    ysize 160
+                    padding (22, 18)
+                    background Frame(Solid("#071825"), 14, 14)
+                    hover_background Frame(Solid("#0a2040"), 14, 14)
 
-    textbutton _("Kalibrasi") action GamepadCalibrate()
+                    vbox:
+                        spacing 12
+
+                        hbox:
+                            spacing 10
+                            text ch_icon:
+                                size 24
+                                yalign 0.5
+                            text ch_title:
+                                size 16
+                                color "#4fc3f7"
+                                bold True
+                                yalign 0.5
+
+                        frame:
+                            xfill True
+                            ysize 1
+                            background Solid("#1565c040")
+
+                        text ch_desc:
+                            size 14
+                            color "#a0c8e0"
+                            line_spacing 4
+
+        null height 4
+
+        ## Baris 2: Panduan navigasi chapter
+        hbox:
+            xfill True
+            spacing 16
+
+            for nav_icon, nav_title, nav_desc in [("◀ ▶", _("Navigasi Halaman"), _("Gunakan tombol Sebelum / Selanjutnya\ndi bawah layar chapter untuk pindah\nke halaman chapter berikutnya.")), ("📋", _("Informasi Chapter"), _("Setiap kartu menampilkan jumlah\nchapter, judul, dan deskripsi singkat\ntentang isi cerita di chapter tersebut.")), ("🏠", _("Kembali ke Lobby"), _("Tekan tombol Kembali di pojok\nkiri atas untuk kembali ke\nlayar utama (lobby) kapan saja."))]:
+                frame at help_card_hover:
+                    xsize 338
+                    ysize 168
+                    padding (22, 18)
+                    background Frame(Solid("#071825"), 14, 14)
+                    hover_background Frame(Solid("#0a2040"), 14, 14)
+
+                    vbox:
+                        spacing 12
+
+                        hbox:
+                            spacing 10
+                            text nav_icon:
+                                size 20
+                                color "#4fc3f7"
+                                yalign 0.5
+                            text nav_title:
+                                size 16
+                                color "#4fc3f7"
+                                bold True
+                                yalign 0.5
+
+                        frame:
+                            xfill True
+                            ysize 1
+                            background Solid("#1565c040")
+
+                        text nav_desc:
+                            size 13
+                            color "#a0c8e0"
+                            line_spacing 4
+
+        null height 4
+        frame:
+            xfill True
+            padding (18, 14)
+            background Frame(Solid("#061629"), 10, 10)
+            hbox:
+                spacing 10
+                text "💡" size 16 yalign 0.5
+                text _("Tips: Chapter akan terbuka otomatis setelah kamu menyelesaikan chapter sebelumnya. Progress tersimpan secara otomatis."):
+                    size 14
+                    color "#7ab8cc"
+                    yalign 0.5
 
 
 style help_button is gui_button
@@ -1071,10 +2098,29 @@ screen confirm(message, yes_action, no_action):
 
             hbox:
                 xalign 0.5
-                spacing 150
+                spacing 80
 
-                textbutton _("Ya") action yes_action
-                textbutton _("Tidak") action no_action
+                button:
+                    action yes_action
+                    xysize (180, 60)
+                    background Frame(Transform(Solid("#fb6e9b")), 10, 10)
+                    hover_background Frame(Transform(Solid("#ff8fb2")), 10, 10)
+                    text _("Ya"):
+                        align (0.5, 0.5)
+                        color "#ffffff"
+                        hover_color "#ffffff"
+                        size 28
+
+                button:
+                    action no_action
+                    xysize (180, 60)
+                    background Frame(Transform(Solid("#8a9cb5")), 10, 10)
+                    hover_background Frame(Transform(Solid("#a0b2cc")), 10, 10)
+                    text _("Tidak"):
+                        align (0.5, 0.5)
+                        color "#ffffff"
+                        hover_color "#ffffff"
+                        size 28
 
     ## Klik kanan dan jawaban escape "Tidak".
     key "game_menu" action no_action
@@ -1087,8 +2133,8 @@ style confirm_button is gui_medium_button
 style confirm_button_text is gui_medium_button_text
 
 style confirm_frame:
-    background Frame([ "gui/confirm_frame.png", "gui/frame.png"], gui.confirm_frame_borders, tile=gui.frame_tile)
-    padding gui.confirm_frame_borders.padding
+    background Frame(Transform(Solid("#2b1e2eec")), 15, 15)
+    padding (60, 60)
     xalign .5
     yalign .5
 
@@ -1521,84 +2567,388 @@ style slider_slider:
     variant "small"
     xsize 900
 
+## Animasi kartu chapter — tema biru navy
+transform chapter_card_hover:
+    on idle:
+        easein 0.22 zoom 1.0 alpha 0.88 yoffset 0
+    on hover:
+        easein 0.22 zoom 1.02 alpha 1.0 yoffset -6
+
+transform chapter_card_locked:
+    on idle:
+        easein 0.2 alpha 0.50
+    on hover:
+        easein 0.2 alpha 0.60
+
 screen chapter_menu():
     tag menu
 
     default page = 0
     $ per_page = 3
-    $ total_pages = (len(chapters) - 1) // per_page + 1
+    $ total_pages = max(1, (len(chapters) - 1) // per_page + 1)
     $ start = page * per_page
     $ end = start + per_page
 
-    use game_menu(_("Chapter")):
+    ## Latar belakang
+    add Transform(gui.game_menu_background, xysize=(1920, 1080))
+    add Solid("#020c1aee")
+
+    ## Header judul
+    vbox:
+        xalign 0.5
+        ypos 42
+        spacing 6
+        hbox:
+            xalign 0.5
+            spacing 18
+            text "✦":
+                size 22
+                color "#1565c0"
+                yalign 0.5
+            text _("CHAPTER SELECTION"):
+                font gui.text_font
+                size 46
+                kerning 8.0
+                color "#4fc3f7"
+                yalign 0.5
+                bold True
+                outlines [(2, "#1565c055", 0, 0)]
+            text "✦":
+                size 22
+                color "#1565c0"
+                yalign 0.5
+        text _("— PILIH CHAPTER YANG INGIN DIMAINKAN —"):
+            font gui.text_font
+            size 14
+            kerning 5.0
+            color "#4fc3f760"
+            xalign 0.5
+
+    ## Garis dekoratif bawah judul
+    frame:
+        xalign 0.5
+        ypos 148
+        xsize 500
+        ysize 2
+        background Solid("#1565c060")
+
+    ## Kartu-kartu chapter
+    hbox:
+        xalign 0.5
+        yalign 0.54
+        spacing 40
+
+        if chapters:
+            for i, chapter in enumerate(chapters[start:end]):
+                $ index = start + i
+                $ label_name = "chapter{}_start".format(index + 1)
+                $ is_unlocked = index <= persistent.chapter_completed
+                $ ch_num = "CH {}".format(index + 1)
+                $ ch_title = _(chapter["title"]) if is_unlocked else "???"
+                $ ch_desc = _(chapter["description"]) if is_unlocked else _("Selesaikan chapter\nsebelumnya untuk\nmembuka chapter ini.")
+                $ has_image = is_unlocked and "image" in chapter and renpy.loadable(chapter["image"])
+
+                if is_unlocked:
+                    button at chapter_card_hover:
+                        action Jump(label_name)
+                        xsize 380
+                        ysize 580
+                        padding (0, 0, 0, 0)
+                        background Frame(Solid("#071a35"), 18, 18)
+                        hover_background Frame(Solid("#0e3060"), 18, 18)
+
+                        vbox:
+                            xfill True
+
+                            ## THUMBNAIL — 220px
+                            frame:
+                                xsize 380
+                                ysize 220
+                                padding (0, 0, 0, 0)
+                                background Solid("#040e20")
+
+                                if has_image:
+                                    add Transform(chapter["image"], size=(380, 220)) align (0.5, 0.5)
+                                else:
+                                    add Solid("#061428")
+                                    vbox:
+                                        align (0.5, 0.5)
+                                        spacing 6
+                                        text "📖":
+                                            size 44
+                                            align (0.5, 0.5)
+                                        text ch_num:
+                                            size 16
+                                            color "#4fc3f722"
+                                            bold True
+                                            xalign 0.5
+
+                                ## Badge nomor chapter
+                                frame:
+                                    xpos 14
+                                    ypos 14
+                                    padding (10, 5, 10, 5)
+                                    background Frame(Solid("#1565c099"), 10, 10)
+                                    text ch_num:
+                                        size 15
+                                        color "#4fc3f7"
+                                        bold True
+
+                                ## Garis bawah thumbnail
+                                frame:
+                                    xfill True
+                                    ysize 3
+                                    ypos 217
+                                    background Solid("#1565c0")
+
+                            ## KONTEN — 360px
+                            frame:
+                                xsize 380
+                                ysize 360
+                                padding (22, 18, 22, 18)
+                                background Solid("#050f20")
+
+                                vbox:
+                                    xfill True
+                                    spacing 14
+
+                                    ## Tombol Mulai — 58px
+                                    frame:
+                                        xfill True
+                                        ysize 58
+                                        padding (0, 0)
+                                        background Frame(Solid("#1565c0"), 12, 12)
+                                        hover_background Frame(Solid("#1976d2"), 12, 12)
+                                        hbox:
+                                            align (0.5, 0.5)
+                                            spacing 12
+                                            text "🔓":
+                                                size 22
+                                                yalign 0.5
+                                            text _("M U L A I"):
+                                                size 19
+                                                color "#ffffff"
+                                                kerning 3.0
+                                                bold True
+                                                yalign 0.5
+
+                                    ## Divider
+                                    frame:
+                                        xfill True
+                                        ysize 2
+                                        background Solid("#4fc3f720")
+
+                                    ## Judul chapter
+                                    frame:
+                                        xsize 336
+                                        ysize 56
+                                        padding (0, 0)
+                                        background Solid("#00000000")
+                                        text ch_title:
+                                            size 22
+                                            color "#4fc3f7"
+                                            bold True
+                                            xmaximum 336
+                                            yalign 0.0
+
+                                    null height 6
+
+                                    ## Deskripsi
+                                    frame:
+                                        xsize 336
+                                        ysize 106
+                                        padding (0, 0)
+                                        background Solid("#00000000")
+                                        text ch_desc:
+                                            size 17
+                                            color "#7ab8cc"
+                                            xmaximum 336
+                                            line_spacing 6
+                                            yalign 0.0
+
+                else:
+                    frame at chapter_card_locked:
+                        xsize 380
+                        ysize 580
+                        padding (0, 0, 0, 0)
+                        background Frame(Solid("#040d1a"), 18, 18)
+
+                        vbox:
+                            xfill True
+
+                            ## THUMBNAIL TERKUNCI — 220px
+                            frame:
+                                xsize 380
+                                ysize 220
+                                padding (0, 0, 0, 0)
+                                background Solid("#030a14")
+
+                                vbox:
+                                    align (0.5, 0.5)
+                                    spacing 10
+                                    text "🔒":
+                                        size 50
+                                        align (0.5, 0.5)
+                                    text _("TERKUNCI"):
+                                        size 15
+                                        color "#1a3a5a"
+                                        kerning 3.0
+                                        align (0.5, 0.5)
+                                        bold True
+
+                                frame:
+                                    xpos 14
+                                    ypos 14
+                                    padding (10, 5, 10, 5)
+                                    background Frame(Solid("#0e2a4a55"), 10, 10)
+                                    text ch_num:
+                                        size 15
+                                        color "#1a3a5a"
+                                        bold True
+
+                                frame:
+                                    xfill True
+                                    ysize 3
+                                    ypos 217
+                                    background Solid("#0e2a4a")
+
+                            ## KONTEN TERKUNCI — 360px
+                            frame:
+                                xsize 380
+                                ysize 360
+                                padding (22, 18, 22, 18)
+                                background Solid("#030c18")
+
+                                vbox:
+                                    xfill True
+                                    spacing 14
+
+                                    ## Tombol terkunci
+                                    frame:
+                                        xfill True
+                                        ysize 58
+                                        padding (0, 0)
+                                        background Frame(Solid("#0c2035"), 12, 12)
+                                        hbox:
+                                            align (0.5, 0.5)
+                                            spacing 12
+                                            text "🔒":
+                                                size 20
+                                                yalign 0.5
+                                            text _("TERKUNCI"):
+                                                size 17
+                                                color "#1a3a5a"
+                                                kerning 2.0
+                                                yalign 0.5
+
+                                    frame:
+                                        xfill True
+                                        ysize 2
+                                        background Solid("#0e2a4a30")
+
+                                    frame:
+                                        xsize 336
+                                        ysize 56
+                                        padding (0, 0)
+                                        background Solid("#00000000")
+                                        text "???":
+                                            size 22
+                                            color "#0e2a4a"
+                                            bold True
+                                            yalign 0.0
+
+                                    null height 6
+
+                                    frame:
+                                        xsize 336
+                                        ysize 106
+                                        padding (0, 0)
+                                        background Solid("#00000000")
+                                        text _("Selesaikan chapter\nsebelumnya untuk\nmembuka chapter ini."):
+                                            size 17
+                                            color "#0e2a4a"
+                                            italic True
+                                            xmaximum 336
+                                            line_spacing 6
+                                            yalign 0.0
+
+        else:
+            text _("Belum ada chapter yang tersedia."):
+                size 28
+                color "#4fc3f7"
+                align (0.5, 0.5)
+
+    ## Navigasi halaman bawah
+    hbox:
+        xalign 0.5
+        ypos 960
+        spacing 40
+
+        button:
+            xysize (175, 50)
+            background Frame(Solid("#071a35"), 12, 12)
+            hover_background Frame(Solid("#1565c0"), 12, 12)
+            sensitive page > 0
+            action SetScreenVariable("page", page - 1)
+            hbox:
+                align (0.5, 0.5)
+                spacing 10
+                text "◀":
+                    size 16
+                    color "#4fc3f7"
+                    yalign 0.5
+                text _("SEBELUM"):
+                    size 15
+                    color "#ffffff"
+                    kerning 2.0
+                    yalign 0.5
 
         frame:
-            xalign 0.6
-            yalign 0.5
-            xsize 1100
-            background None
+            ysize 50
+            padding (24, 0)
+            background Frame(Solid("#040e20"), 12, 12)
+            text "{} / {}".format(page + 1, total_pages):
+                size 18
+                color "#4fc3f7"
+                kerning 4.0
+                align (0.5, 0.5)
 
-            vbox:
-                spacing 40
+        button:
+            xysize (195, 50)
+            background Frame(Solid("#071a35"), 12, 12)
+            hover_background Frame(Solid("#1565c0"), 12, 12)
+            sensitive page < total_pages - 1
+            action SetScreenVariable("page", page + 1)
+            hbox:
+                align (0.5, 0.5)
+                spacing 10
+                text _("SELANJUTNYA"):
+                    size 15
+                    color "#ffffff"
+                    kerning 2.0
+                    yalign 0.5
+                text "▶":
+                    size 16
+                    color "#4fc3f7"
+                    yalign 0.5
 
-                for i, chapter in enumerate(chapters[start:end]):
-                    $ index = start + i
-                    $ unlocked = (index == 0) or (persistent.chapter_completed >= index)
-
-
-                    button:
-                        xfill True
-                        ysize 220
-                        padding (30, 25)
-                        background Frame("gui/frame.png", 20, 20)
-
-                        if unlocked:
-                            action Jump("chapter{}_start".format(index + 1))
-                        else:
-                            action NullAction()
-
-                        hbox:
-                            spacing 30
-
-                            if unlocked and "image" in chapter and renpy.loadable(chapter["image"]):
-                                add chapter["image"] xsize 260 ysize 160
-                            else:
-                                add Solid("#222") xsize 260 ysize 160
-
-
-                            vbox:
-                                spacing 10
-
-                                text chapter["title"]:
-                                    size 30
-                                    if unlocked:
-                                        color "#ffffff"
-                                    else:
-                                        color "#777777"
-
-                                text chapter["description"]:
-                                    size 20
-                                    line_spacing 4
-                                    if unlocked:
-                                        color "#cccccc"
-                                    else:
-                                        color "#777777"
-
-                # PANAH NAVIGASI
-                hbox:
-                    spacing 100
-                    xalign 0.5
-                    yalign 1.0
-
-                    textbutton "◀":
-                        sensitive page > 0
-                        action SetScreenVariable("page", page - 1)
-
-                    text "{}/{}".format(page + 1, total_pages):
-                        size 22
-
-                    textbutton "▶":
-                        sensitive page < total_pages - 1
-                        action SetScreenVariable("page", page + 1)
-
-
+    ## Tombol Kembali
+    button:
+        action Return()
+        xpos 40
+        ypos 40
+        xysize (165, 50)
+        background Frame(Solid("#071a35"), 12, 12)
+        hover_background Frame(Solid("#1565c0"), 12, 12)
+        hbox:
+            align (0.5, 0.5)
+            spacing 12
+            text "◀":
+                size 18
+                color "#4fc3f7"
+                yalign 0.5
+            text _("KEMBALI"):
+                size 17
+                color "#ffffff"
+                kerning 2.0
+                yalign 0.5

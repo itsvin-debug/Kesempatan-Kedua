@@ -1,132 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 241, in script
-    call screen chapter_menu
-renpy.game.JumpException: chapter5_start
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "game/script.rpy", line 241, in script
-    call screen chapter_menu
-renpy.script.LabelNotFound: could not find label 'chapter5_start'. Did you mean: 'chapter1_start'?
+  File "game/tl/english/screens.rpy", line 78, in script
+    old "Ya"
+Exception: A translation for "Ya" already exists at game/tl/english/custom_menu_translations.rpy:46.
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/script.rpy", line 241, in script
-    call screen chapter_menu
-  File "renpy/ast.py", line 2241, in execute
-    self.call("execute")
-    ~~~~~~~~~^^^^^^^^^^^
-  File "renpy/ast.py", line 2195, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/statements.py", line 381, in call
-    return method(parsed, *args, **kwargs)
-           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/common/000statements.rpy", line 695, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-                    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/exports/statementexports.py", line 358, in call_screen
-    raise rv
-  File "renpy/exports/statementexports.py", line 348, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/ui.py", line 306, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/core.py", line 2154, in interact
-    repeat, rv = self.interact_core(
-                 ~~~~~~~~~~~~~~~~~~^
-        preloads=preloads,
-        ^^^^^^^^^^^^^^^^^^
-    ...<4 lines>...
-        **kwargs,
-        ^^^^^^^^^
-    )
-    ^
-  File "renpy/display/core.py", line 3248, in interact_core
-    rv = root_widget.event(ev, x, y, 0)
-         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1281, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1281, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1281, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/screen.py", line 805, in event
-    rv = self.child.event(ev, x, y, st)
-         ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1281, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1510, in event
-    rv = super(Window, self).event(ev, x, y, st)
-         ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 273, in event
-    rv = d.event(ev, x - xo, y - yo, st)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1281, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1510, in event
-    rv = super(Window, self).event(ev, x, y, st)
-         ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 273, in event
-    rv = d.event(ev, x - xo, y - yo, st)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1510, in event
-    rv = super(Window, self).event(ev, x, y, st)
-         ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 273, in event
-    rv = d.event(ev, x - xo, y - yo, st)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1281, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/behavior.py", line 1185, in event
-    return handle_click(self.clicked)
-           ~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "renpy/display/behavior.py", line 1107, in handle_click
-    rv = run(action)
-         ~~~^^^^^^^^
-  File "renpy/display/behavior.py", line 411, in run
-    return action(*args, **kwargs)
-           ~~~~~~^^^^^^^^^^^^^^^^^
-  File "renpy/common/00action_control.rpy", line 79, in __call__
-    renpy.jump(self.label)
-    ~~~~~~~~~~^^^^^^^^^^^^
-  File "renpy/exports/statementexports.py", line 271, in jump
-    raise renpy.game.JumpException(label)
-renpy.game.JumpException: chapter5_start
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "renpy/bootstrap.py", line 401, in bootstrap
-    renpy.main.main()
-    ~~~~~~~~~~~~~~~^^
-  File "renpy/main.py", line 591, in main
-    run(restart)
-    ~~~^^^^^^^^^
-  File "renpy/main.py", line 137, in run
-    renpy.execution.run_context(True)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
-  File "renpy/execution.py", line 1036, in run_context
-    context.run()
-    ~~~~~~~~~~~^^
-  File "game/script.rpy", line 241, in script
-    call screen chapter_menu
-  File "renpy/script.py", line 1201, in lookup
-    raise LabelNotFound(original)
-renpy.script.LabelNotFound: could not find label 'chapter5_start'. Did you mean: 'chapter1_start'?
+  File "game/tl/english/screens.rpy", line 78, in script
+    old "Ya"
+  File "renpy/ast.py", line 3046, in execute
+    renpy.translation.add_string_translation(self.language, self.old, self.new, newloc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/translation/__init__.py", line 593, in add_string_translation
+    stl.add(old, new, newloc)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "renpy/translation/__init__.py", line 539, in add
+    raise Exception('A translation for "{}" already exists at {}:{}.'.format(quote_unicode(old), fn, line))
+Exception: A translation for "Ya" already exists at game/tl/english/custom_menu_translations.rpy:46.
 
 Windows-11-10.0.26200-SP0 AMD64
 Ren'Py 8.5.2.26010301
 DREAM 1.0
-Thu Jan 22 20:54:35 2026
+Thu Feb 26 15:37:02 2026

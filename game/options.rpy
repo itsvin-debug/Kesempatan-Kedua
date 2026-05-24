@@ -211,3 +211,18 @@ init python:
 ## pisahkan dengan garis miring.
 
 # define build.itch_project = "renpytom/test-project"
+
+
+## Menonaktifkan fitur geser kembali ke lobby (Rollback dan Menu Klik Kanan)
+define config.rollback_enabled = False
+
+init python:
+    # Menghapus klik kanan dari game menu
+    if 'mouseup_3' in config.keymap['game_menu']:
+        config.keymap['game_menu'].remove('mouseup_3')
+    
+    # Menghapus scroll atas/bawah yang biasa terpicu saat geser 2 jari
+    if 'mousedown_4' in config.keymap['rollback']:
+        config.keymap['rollback'].remove('mousedown_4')
+    if 'mousedown_5' in config.keymap['rollforward']:
+        config.keymap['rollforward'].remove('mousedown_5')
