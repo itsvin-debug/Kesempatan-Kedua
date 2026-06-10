@@ -179,3 +179,12 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# Ren'Py files
+*.rpyc
+*.rpyb
+game/cache/
+game/saves/
+log.txt
+errors.txt
+traceback.txt

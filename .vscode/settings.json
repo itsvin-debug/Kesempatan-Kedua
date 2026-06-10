@@ -255,6 +255,12 @@
                 "settings": {
                     "foreground": "#00bfff"
                 }
+            },
+            {
+                "scope": "renpy.meta.color.#fcc",
+                "settings": {
+                    "foreground": "#fcc"
+                }
             }
         ]
     }
