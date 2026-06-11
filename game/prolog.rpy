@@ -1,4 +1,4 @@
-label chapter1_start:
+label prolog_start:
 
     play music "audio/BACKSOUNDKKC.mp3" volume 0.3
 

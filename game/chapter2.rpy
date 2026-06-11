@@ -1,4 +1,4 @@
-label chapter3_start:
+label chapter2_start:
 
     play music "audio/BACKSOUNDKKC.mp3"
     $ renpy.music.set_volume(0.1, channel="music")

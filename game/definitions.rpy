@@ -1,24 +1,28 @@
 # Data chapter: list of dicts dengan title, description, dan image untuk setiap chapter
 default chapters = [
     {
-        "title": _("Chapter 1: Pertemuan Pertama"),
+        "title": _("Prolog: Pertemuan Pertama"),
         "description": _("tahun kemarin tahun yang membosankan. Namun, tahun ini ada sesuatu yang merubah hidup lo dan pertemuan pertama yang akan mengubah nasib lo yang membosankan."),
-        "image": "images/bg/apartment a exterior day.png"
+        "image": "images/bg/apartment a exterior day.png",
+        "label": "prolog_start"
     },
     {
         "title": _("Chapter 2: kesialan yang mengejutkan"),
         "description": _("di hari ini lu ngalamin sial yaitu telat bangun, lu bergegas berangkat sekolah namun ada hal yang tak terduga"),
-        "image": "images/chapter2.png"
+        "image": "images/chapter2.png",
+        "label": "chapter1_start"
     },
     {
         "title": _("Chapter 3: the first step in yor life"),
         "description": _("langkah awal yang akan mengubah hidup lo kedepannya"),
-        "image": "images/chapter3.png"
+        "image": "images/chapter3.png",
+        "label": "chapter2_start"
     },
     {
         "title": _("Chapter 4: the last day"),
         "description": _("setelah lu nganterin dia, lu bergegas untuk berangkat ekskul dan menghabiskan hari ini. Apakah besok hari lo berubah?"),
-        "image": "images/chapter4.png"
+        "image": "images/chapter4.png",
+        "label": "chapter4_start"
     },
     {
         "title": _("Chapter 5: coming soon"),

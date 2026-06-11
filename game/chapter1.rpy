@@ -1,4 +1,4 @@
-label chapter2_start:
+label chapter1_start:
 
     play music "audio/BACKSOUNDKKC.mp3" volume 0.1
 
@@ -16,7 +16,6 @@ label chapter2_start:
     stop sound
 
     t "hmm.....?"
-
 
     play sound "alarm.mp3"
 

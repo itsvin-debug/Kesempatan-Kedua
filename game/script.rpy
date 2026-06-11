@@ -5,4 +5,4 @@
 # Game start
 label start:
     # Langsung lompat ke chapter 1
-    jump chapter1_start
+    jump prolog_start

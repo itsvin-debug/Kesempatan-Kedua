@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## Inisialisasi
 ################################################################################
 
@@ -2641,7 +2641,7 @@ screen chapter_menu():
         if chapters:
             for i, chapter in enumerate(chapters[start:end]):
                 $ index = start + i
-                $ label_name = "chapter{}_start".format(index + 1)
+                $ label_name = chapter.get("label", "chapter{}_start".format(index + 1))
                 $ is_unlocked = index <= persistent.chapter_completed
                 $ ch_num = "CH {}".format(index + 1)
                 $ ch_title = _(chapter["title"]) if is_unlocked else "???"
