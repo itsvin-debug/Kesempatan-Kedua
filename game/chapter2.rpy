@@ -1,300 +1,268 @@
-label chapter2_start:
+label chapter3_start:
 
-    play music "audio/BACKSOUNDKKC.mp3" volume 0.1
+    play music "audio/BACKSOUNDKKC.mp3"
+    $ renpy.music.set_volume(0.1, channel="music")
 
-    scene bg BLACK
-    show text "{color=#ff0000}{size=200}KEESOKAN HARINYA{/size}{/color}" at game_over_pos
-
-    scene bg kamartidurkarakteru
-
-    "keesokan harinya"
-
-    play sound "alarm.mp3"
-
-    "kring....kring....kring"
-
-    stop sound
-
-    t "hmm.....?"
-
-
-    play sound "alarm.mp3"
-
-    "kringg...kringg...kringg"
-
-    stop sound
-
-    show taishiro outing angry at zoom_taishiro
-
-    t "AHHH, SIAL BERISIK BANGET SIH NIH JAM"
-
-    hide taishiro outing angry
-
-    "lu melihat sekarang sudah jam berapa"
-
-    show taishiro schoolwinter surprised at zoom_taishiro
-
-    t "astaga, gw telat bangun! udah jam 06:50 mana sekolah masuk jam 07:00 belum diperjalanan 15 menit, gw harus buru-buru siap-siap ke sekolah bisa dihukun yang ada!"
-
-    scene bg BLACK
-    show text "{color=#ff0000}{size=200}SESAMPAINYA DISEKOLAH{/size}{/color}" at game_over_pos
-
-    scene bg sekolahgrtutup
-
-    "sesampainya di sekolah"
+    scene bg kelas_sore
+    with fade
 
     show taishiro schoolwinter happy at zoom_taishiro
 
-    t "hufft... akhirnya sampai juga di sekolah"
+    t "finally, selesai juga pelajaran hari ini"
 
-    hide taishiro schoolwinter happy
-
-    "lu melihat gerbang sekolah"
-
-    show taishiro schoolwinter angry at zoom_taishiro
-
-    t "ahhh sial, gerbang sekolah udah ditutup lagi!"
-
-    t "gara gara begadang main game nih"
-
-    menu :
-        "mencoba masuk lewat gerbang belakang":
-            t "mungkin gw bisa coba masuk lewat gerbang belakang, jalan andalan gw semoga aja gak ketemu penjaga"
-            jump good_ending1
-        
-
-
-        "mencoba berbicara dengan satpam":
-            hide taishiro schoolwinter happy at zoom_taishiro
-            t "mungkin gw bisa coba bicara sama satpamnya"
-            show moi grin at zoom_satpam
-            hide taishiro schoolwinter happy at zoom_taishiro
-            s "hei nak, gerbang sekolah sudah ditutup. kamu terlambat ya?"
-            show taishiro schoolwinter happy at zoom_taishiro
-            hide moi grin at zoom_satpam
-            t "iya pak, maaf saya telat. apakah saya masih boleh masuk?"
-            show moi grin at zoom_satpam
-            hide taishiro schoolwinter happy at zoom_taishiro
-            s "pulanglah kamu, sudah telat. besok jangan sampai terlambat lagi ya"
-            show taishiro schoolwinter sad at zoom_taishiro
-            hide moi grin at zoom_satpam
-            t "t-t-tapi pak, saya harus masuk ke kelas"
-            show moi grin at zoom_satpam
-            hide taishiro schoolwinter sad at zoom_taishiro
-            s "maaf nak, peraturan sudah jelas. kamu harus pulang"
-            hide moi grin at zoom_satpam
-            jump game_over1
-
-label game_over1:
-    scene bg BLACK
-    with fade
-    stop music
-    play music "audio/marioGV.ogg" volume 1.0 noloop
-    show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
-    n "ppppfffttttt"
-    n "telat langsung disuruh pulang ya? kasian amat manusia satu ini"
-    n "logika kids, yakali satpam bolehin lu masuk wkwkwk"
-    n "jadiin pelajaran juga ya, disiplin itu penting, apalagi di sekolah mangkanya jangan begadang main game"
-    n "jadiin pelajaran biar gak telat, NT"
-    menu:
-        "Memulai Ulang (Restart)":
-            jump start
-        "Kembali ke Lobby (Main Menu)":
-            return
-    with fade
-
-label good_ending1:
-
-    scene bg tanggakelas
-    with fade
-    show taishiro schoolwinter happy at zoom_taishiro
-
-    t "gw harus buru buru nih sebelum ketuan guru/penjaga"
-
-    hide taishiro schoolwinter happy
-
-    "setelah melewati tembok belakang lu jalan pelan pelan agar tidak ketauan guru/penjaga yang sedang keliling dan setelah merasa aman di lorong sekolah lo lari sekuat tenaga menuju kelas"
-
-    "dan lopun berhasil"
-
-    show taishiro schoolwinter happy at zoom_taishiro
-
-    t "yes, kayaknya gak ketuan deh"
-
-    hide taishiro schoolwinter happy
-
-    "lu berlari sekuat tenaga menuju kelas lu"
-
-    "setibanya di depan kelas lu"
-
-    scene bg gerbangkelas
-    with fade
-
-    play sound "audio/door_bang.wav"
-
-    scene bg gerbangkelas at bg_shake
-
-    show text "{size=80}{b}BRAKK!!{/b}{/size}" at text_shake
-    with dissolve
-
-    pause 0.4
-
-    hide text
-
-    "Pintu kelas dibuka dengan sedikit kencang."
-
-    "murid-murid di kelas menoleh ke arah lu yang baru masuk"
-
-    "lu ngos ngosan mencoba ngambil nafas"
-
-    "lu mencoba melihat kedepan setelah tadi lu stabilin nafas"
-
-    "dan yang terjadi....."
-
-    "ya gurunya sudah datang dan melihat lu dengan tatapan seekor pemburu yang ingin menerkam mangsanya"
+    t "seperti biasa gw balik terus tidur atau main game"
     
-    show taishiro schoolwinter surprised at zoom_taishiro
-    with dissolve
+    hide taishiro schoolwinter happy
 
-    t "(mati gw....)"
-    t "a-a-nu pak... maaf pak saya telat"
+    "tiba tiba dapet notif dari teman dekat lo kalau ada latihan basket dan dia izin berangkat duluan"
+
+    "temen dekatlu pun bilang kalau dia akan nunggu lu disana"
 
     show taishiro schoolwinter happy at zoom_taishiro
-    with dissolve
 
-    show mod frown at zoom_guru
-    hide taishiro schoolsummer happy at zoom_taishiro
+    t "oh iya gw ada latihan basket hari ini"
 
-    g "kamu telat lagi Kenzo, ini sudah yang ketiga kalinya"
+    hide taishiro schoolwinter happy
 
-    show taishiro schoolwinter sad at zoom_taishiro
-    hide mod frown at zoom_guru
+    "lo bergegas merapihkan buku buku"
 
-    t "maaf banget pak"
+    "setelah selesai merapihkan. lu siap siap untuk berangkat"
 
-    hide taishiro schoolwinter at zoom_taishiro
+    "namun......"
 
-    "akhirnya lu memutuskan untuk mengangkat kepala"
+    show taishiro schoolwinter happy at zoom_taishiro
+    hide alice_worried
 
-    "secara otomatis mata lu melihat kedepan"
+    t "........"
 
-    "setelah melihat kedepan ternyata lu ngeliat gadis yang berdiri di depan menghadap murid kelas"
 
-    "jelasss, lu sedikit terkejut karena melihat gadis itu"
-    
-    show taishiro schoolwinter surprised at zoom_taishiro
-
-    t "(kok gw gak liat tadi ada cewek disamping pak agus dah. Eh bentar.....)"
-
-    t "loh , lukan cewek yang kemarin"
-
-    "lo melihat gadis itu dengan tatapan terkejut"
-
+    hide taishiro schoolwinter happy
     show alice_worried at zoom_alice
-    hide taishiro schoolwinter surprised at zoom_taishiro
 
-    l "loh lu cowok yang kemarin bantuin gw nyari kucing"
+    l "........"
 
-    hide alice_worried at zoom_alice 
+    l "Ken"
 
-    "diapun sama terkejutnya melihat shiro"
-
-    show mod frown at zoom_guru
-
-    g "loh kalian udah pernah ketemu?"
-
-    hide mod frown 
-
-    "mereka berdua serentak jawab iya"
-
-    show mod frown at zoom_guru
-
-    g "oke bagus dan cukup kenalannya, Ken kali ini saya maafkan, tapi kalau kamu ngulang lagi kamu akan diberikan surat peringatan"
-
-    hide mod frown 
     show taishiro schoolwinter happy at zoom_taishiro
+    hide alice_worried
 
-    t "wah makasih banyak pak, saya janji gak akan telat lagi"
-    
-    hide taishiro schoolwinter normal
-    show mod frown at zoom_guru
+    t "ya?"
 
-    g "iya, silahkan kamu duduk. Untuk kamu lisa silahkan duduk dibelakang"
-    
-    hide mod frown
-    show alice_happy at zoom_alice
+    hide taishiro schoolwinter happy
+    show alice_worried at zoom_alice
 
-    l "baik pak"
-    
-    hide Alice_Happy 
+    l "rumahlu deket taman kemarin bukan?"
 
-    scene bg kelas
-    with fade
+    show taishiro schoolwinter happy at zoom_taishiro
+    hide alice_worried
 
-    "waktu istirahatpun tiba"
+    t "ya rumah gw luumayan deket sih ama taman kemarin, kenapa? rumahlu deket situ juga?"
 
-    "anak anak kelas terutama cowok langsung ngerumunin anak baru itu"
+    t "(haha asal ceplos aja, gak mungkin rumah dia deket situ toh kemarin paling cuman main doang bareng kucingnya)"
 
+    hide taishiro schoolwinter happy
+    show alice_worried at zoom_alice
+
+    l "ya, rumah gw deket situ"
+
+    show taishiro schoolwinter happy at zoom_taishiro
+    hide alice_worried
+
+    t "eh..."
+
+    t "(lah padahal gw asbun doang)"
+
+    t "wah dekat dong berarti, btw disitu juga ada cafe enak loh kopi ama makanannya, nanti mau kesana buat nyoba?"
+
+    hide taishiro schoolwinter happy
+    show alice_worried at zoom_alice
+ 
+    l "wah boleh tuh, mau kesana kapan? sekarang?"
+ 
+    hide alice_worried
     show taishiro schoolwinter surprised at zoom_taishiro
 
-    t "(buset cowok cowok langsung pada nerkam semua kek nemu mangsa aja jir, mentang mentang ada bidadari nyasar ke kelas ini)"
-
-    t "(mana cogan cogan dari kelas lain banyak yang ngumpul lagi, hffttt orang kaya gw yang muka standar kalau ikut join yang ada kayak monyet penasaran"
+    t "(aduh gw ada ekskul basket lagi, gimana ya...)"
 
     hide taishiro schoolwinter surprised
-    "saat lu ingin pergi ke rooftop lu ngerasa kalau anak baru itu seperti merasa risih karena di kerumunin banyak orang terutama cowok buaya"
 
     menu :
-        "ikut ngerumunin anak baru itu" :
+        "nolak tawarannya dan ngajak pulang bareng saja, gak jadi ikut ekskul basket" :
+            
             show taishiro schoolwinter happy at zoom_taishiro
-            t "apa gua ikut ngumpul ya?" 
-            t "ikut ajalah, siapa tau bisa lebih deket"
-            jump game_over2
 
-        "langsung menuju rooftop sekolah dan ninggalin tuh cewek" :
-            show taishiro schoolwinter pout at zoom_taishiro
-            t "ahh bodoamatlah, mending ke rooftop gw"
-            jump game_over3
+            t "aduh lain kali aja ya, gw mau langsung balik, capek banget soalnya"
 
-        "bantu ngeluarin dia dari kerumunan"  :
-            show taishiro schoolwinter happy at zoom_taishiro           
-            t "(hmmmm, kalau ditinggal kasian juga)"
-            hide taishiro schoolwinter happy
-            "lu menuju ke arah kerumunan tersebut"
-            show taishiro schoolwinter happy at zoom_taishiro
-            t "misi...permisi, numpang lewat mas mbak"
-            hide taishiro schoolwinter happy
-            "orang orang jadi ngeliat termasuk anak baru itu"
-            "dan ternyata salah satu cogan disitu ngatain lu cuman jadi pengganggu aja"
-            "mungkin karena muka lu yang standar lu gak cocok ikut ngerumpi"
-            show taishiro schoolwinter angry at zoom_taishiro
-            t "(APASIH, nih orang ribet banget ya gw tau muka gw gak jauh kayak beruk tapi peka dong itu dia ngerasa risih)"
-            hide taishiro schoolwinter angry
-            "gumam lu dalam hati"
-            show alice_worried at zoom_alice
-            ".........."
-            hide alice_worried
-            show taishiro schoolwinter happy at zoom_taishiro
-            t "eh mau ngasih info doang, lu tadi dipanggil pak agus"
+            t "lu mau ikut bareng gw naik motor ga?"
+
             hide taishiro schoolwinter happy
             show alice_worried at zoom_alice
-            l "gw dipanggil? ada apa?"
-            hide alice_worried
-            show taishiro schoolwinter happy at zoom_taishiro
-            t "gak tau, sini gw anterin ke pak agus"
-            "dan orang orang disekitarnya sedikit mengeluh terutama para BUAYA"
-            jump good_ending2
 
-label game_over2:
+            l "hmm.. boleh deh"
+
+            l "berarti lain kali aja kalau lu gak capek atau sibuk"
+
+            hide taishiro schoolwinter happy
+
+            "dan lu pun malah balik dan bolos ekskul basket"
+            jump game_over6
+
+        "nolak tawarannya karena lu ada ekskul basket dan ninggalin dia di kelas" :
+
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            t "aduh sorry banget, gw ada ekskul basket sekarang"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "loh ekskul basket?"
+
+            show taishiro schoolwinter happy at zoom_taishiro
+            hide alice_worried
+
+            t "iya nih gw lagi buru buru, sorry banget ya"
+
+            hide taishiro schoolwinter happy
+
+            "lupun berangkat buru buru dan ninggalin dia di kelas"
+            jump game_over7
+
+        "nolak tawarannya karena ada ekskul dan anterin dia balik" :
+
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            t "aduh sorry banget gw gak bisa hari ini soalnya ada ekskul"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "oh lu ekskul basket ya?"
+
+            show taishiro schoolwinter happy at zoom_taishiro
+            hide alice_worried
+
+            t "iya nih sorry banget"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "iya gapapa"
+
+            show taishiro schoolwinter happy at zoom_taishiro
+            hide alice_worried
+
+            t "btw lu balik make apa? dijemput ortulu kah?"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "gw naik transportasi umum, soalnya ayah gw lagi sibuk kerja"
+
+            show taishiro schoolwinter happy at zoom_taishiro
+            hide alice_worried
+
+            t "(hmmm kasian juga kalau pulang sendiri naik angkutan umum)"
+
+            t "mau gw anterin naik motor gw gak?"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "eh gak usah. Nanti ngerepotin sama nanti lu telat ekskul basket"
+
+            show taishiro schoolwinter happy at zoom_taishiro
+            hide alice_worried
+
+            t "udah santai aja"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "aduh, nanti lu dimarahin pelatih lu kalau telat. Gw pulang sendiri aja"
+
+            show taishiro schoolwinter happy at zoom_taishiro
+            hide alice_worried
+
+            t "udah ikut aja soalnya gw sekalian mau ngambil barang ketinggalan di rumah"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "hmmm, bener nih? lu gak ngeboongkan kalau ada barang ketinggalan?"
+            
+            show taishiro schoolwinter happy at zoom_taishiro
+            hide alice_worried
+
+            t "gak kok santai aja"
+            t "(tajem banget di cewek instingnya)"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "yaudah gw bareng lu ya"
+            
+            show taishiro schoolwinter happy at zoom_taishiro
+            hide alice_worried
+
+            t "sip lu tunggu aja di depan gerbang sekolah entar gw kesana, mau ke parkiran ngambil motor"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "oke, gw kesana ya"
+
+            show taishiro schoolwinter happy at zoom_taishiro
+            hide alice_worried
+
+            t "ya"
+
+            hide taishiro schoolwinter happy
+
+            "lu ngambil motor terlebih dahulu dan dilanjut jemput lisa didepan gerbang sekolah. setelah itu, lu langsung gas anter ke rumahnya"
+            jump good_ending4
+
+        "terima tawarannya pergi ke cafe dan bolos ekskul basket" :
+
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            t "hmm.. boleh deh, mau bareng naik motor?"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "emang lu gak sibuk?"
+
+            show taishiro schoolwinter happy at zoom_taishiro
+            hide alice_worried
+
+            t "enggak santai aja"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "oh boleh deh kalau lagi gak sibuk lunya"
+
+            show taishiro schoolwinter happy at zoom_taishiro
+            hide alice_worried
+
+            t "oke"
+
+            hide taishiro schoolwinter happy
+
+            "lu berangkat ke cafe dan bolos ekskul basket. Parahnya lagi lu gak ngabarin temenlu"
+            jump game_over8
+
+
+label game_over6:
     scene bg BLACK
     with fade
-    stop music
-    play music "audio/marioGV.ogg" volume 1.0 noloop
+    play sound "marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
-    n "yahhh si bro kepoan mana bilangnya mau lebih deket wkwwk, sadar diri bos muka lu aja pas pasan"
-    n "btw punya kaca? ngaca dulu sana. Lu ikut malah bikin runyam bukannya deket"
-    n "udah tau dia ngerasa risih di kerumunan, malah ngikut nimbrung"
-    n "hadehhh peka dikit, NT dah"
+    n "si bro pemalas banget udah gak ikut basket balik lagi kerumah"
+    n "lu balik juga mau ngapain? main HP? kagak guna"
+    n "lebih baik tubuhlu digerakkin, udah mah nolak tawaran lagi. gak respect emang"
+    n "udah sono coba lagi gak usah maless"
     menu:
         "Memulai Ulang (Restart)":
             jump start
@@ -302,16 +270,14 @@ label game_over2:
             return
     with fade
 
-label game_over3:
+label game_over7:
     scene bg BLACK
     with fade
-    stop music
-    play music "audio/marioGV.ogg" volume 1.0 noloop
+    play sound "marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
-    "gila si bro anti sosial, pasti orang cool dan gak peduli apa yang terjadi disekitar"
-    "peka dikitlah jadi cowok, aduh"
-    "gak usah sok cuek pantes jomblo, lu aja orangnya gak peduli sekitar gimana mau dapet cewek"
-    "makan tuh kata when yah setiap hari, NT"
+    n "waduh NT banget, walaupun lagi buru buru minimal tawarin jalan bareng ke gerbang bukannya ninggalin"
+    n "gak peka emang nih orang"
+    n "coba lagi biar peka jadi orang"
     menu:
         "Memulai Ulang (Restart)":
             jump start
@@ -319,146 +285,263 @@ label game_over3:
             return
     with fade
 
-label good_ending2 :
-    scene bg gerbangkelas
+label game_over8:
+    scene bg BLACK
     with fade
-    "merekapun keluar dari kelas"
-
-    scene bg lorongkelas
+    play sound "marioGV.mp3"
+    show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
+    n "kebangetan nih orang udah ngebohong, bolos basket, ninggalin temen lu lagi"
+    n "itu temen lu nungguin lu, parah sih di PHP gak respect banget"
+    n "mikir kids, coba belajar respect ama jangan bohong sana"
+    menu:
+        "Memulai Ulang (Restart)":
+            jump start
+        "Kembali ke Lobby (Main Menu)":
+            return
     with fade
 
-    "mereka sedang jalan santai di lorong kelas"
+label good_ending4 :
 
-    show alice_worried at zoom_alice
-    
-    l "emang pak agus tadi manggil gw?"
+    scene bg sekolahgrtutup
+    with fade
 
-    hide alice_worried
-    show taishiro schoolwinter happy at zoom_taishiro
-    
-    t "gak kok, gw cuman bohong tadi"
+    "saat menjemput lisa digerbang lu jadi pusat perhatian"
 
-    hide taishiro schoolwinter happy
-    show alice_worried at zoom_alice
+    show taishiro schoolwinter angry  at zoom_taishiro
 
-    l "lah, berarti lu ngebohong tadi?"
-
-    hide alice_worried
-    show taishiro schoolwinter happy at zoom_taishiro
-    
-    t "ya"
-
-    show alice_worried at zoom_alice
-    hide taishiro schoolwinter happy
-
-    l "kok gitu, kenapa?"
-
-    hide alice_worried
-    show taishiro schoolwinter happy at zoom_taishiro
-
-    t "lu ngerasa risihkan dikerumunin banyak orang apalagi banyak cowok"
-
-    show alice_worried at zoom_alice
-    hide taishiro schoolwinter happy
-
-    l "........."
-
-    l "eh, kok lu bisa tau?"
-
-    hide alice_worried
-    show taishiro schoolwinter happy at zoom_taishiro
-
-    t "cuman sekedar firasat doang"
-    
-    show alice_worried at zoom_alice
-    hide taishiro schoolwinter happy
-
-    l "........."
-
-    hide alice_worried
-    show alice_happy at zoom_alice
-
-    l "........."
-
-    hide alice_happy
-    show taishiro schoolwinter blush at zoom_taishiro
-
-    t "(jirlah....pantesan dikerumunin buaya lapar, emang sasaran segar nih orang)"
-
-    hide taishiro schoolwinter blush
-    "yaa lu secara gak langsung ngatain dia cantik"
-    "tapi tanpa lu sadari banyak orang yang natap lu berdua"
-    "lebih tepatnya sih natap cewek samping lu"
-    "siapa juga yang mau natap lo"
-    "dan lo ternyata denger obrolan mereka walaupun suarany kecil tapi itu menghinalu, karena orang sebiasa kek lu bisa jalan berdua sama primadona sekolah"
-    "yang parahnya lagi lu sampe dikatain KODOK ZUMA"
-
-    show taishiro schoolwinter angry at zoom_taishiro
-    t "(sialan tuh orang, muka gw dikatain mirip KODOK ZUMA)"
+    t "(LAGI LAGI GINI SIALAN, nih orang orang punya masalah apa dah sampe liatin gw segitunya)"
 
     hide taishiro schoolwinter angry
 
-    "lu mencoba untuk menghiraukan dan lanjut ngobrol dengan anak pindahan yang langsung jadi primadona sekolah"
-    "dan lu baru inget, kalau niat lu tadinya ke rooftop sekolah buat istirahat dan nikmatin pemandangan"
+    "karena lu orangnya cuek, lupun berusaha tidak peduli sama sekitar lu"
 
     show taishiro schoolwinter happy at zoom_taishiro
 
-    t "(lah iya, tadikan gw mau ke rooftop tapi apa ke kantin ya?)"
+    t "lis, dah siap?"
+
+    hide taishiro schoolwinter happy
+    show alice_worried at zoom_alice
+
+    l "udah"
+
+    hide alice_worried 
+    show taishiro schoolwinter happy at zoom_taishiro
+
+    t "oke sip, gass meluncur"
+
+    hide taishiro schoolwinter happy
+
+    scene bg jalan
+    with fade
+
+    "mereka berduapun akhirnya meluncur"
+
+    "saat diperjalanan mereka berbincang bincang santai"
+
+    "tapi saat sudah setengah jalan tiba tiba jalan didepan macet"
+
+    show taishiro schoolwinter angry  at zoom_taishiro
+
+    t "(sial, napa harus macet sih. Hobi banget nih kota kalau soal macet, mana macetnya kayak nungguin bansos)"
+
+    t "(tapi ada sih beberapa jalan)"
 
     menu :
-        "ajak dia ke rooftop" :
-            show taishiro schoolwinter happy at zoom_taishiro
-            t "lu mau ikut gw rooftop sekolah gak?"
-            t "disana enak kalau buat liat pemandangan dari atas sama tempatnya juga sejuk"
-            hide taishiro schoolwinter happy
-            show alice_worried at zoom_alice
-            l "hmmm, boleh deh"
-            hide alice_worried
-            jump good_ending3
+        "lewat jalan pintas" :
 
-        "ke rooftop tanpa ajak dia" :
+            hide alice_worried 
             show taishiro schoolwinter happy at zoom_taishiro
-            t "eh gw lupa gw mau pergi ke rooftop dulu ya, lu ke kelas lagi aja dulu"
-            hide taishiro schoolwinter happy
-            show alice_worried at zoom_alice
-            l "ehh, gw bol-"
-            hide alice_worried
-            show alice_doubt at zoom_alice
-            l "......"
-            hide alice_doubt
-            "lu malah ngacir ninggalin dia"
-            jump game_over4
 
-        "ke kantin bareng dia" :
-            show taishiro schoolwinter happy at zoom_taishiro
-            t "mau ke kantin gak?"
+            t "eh lis, gw lewat jalan pintas aja ya biar cepet"
+
             hide taishiro schoolwinter happy
             show alice_worried at zoom_alice
-            l "boleh"
-            hide alice_worried
-            "saat dikantin"
+
+            l "ya, emang lewat mana?"
+
+            hide alice_worried 
             show taishiro schoolwinter happy at zoom_taishiro
-            t "(woilah, rame banget nih kantin kek lagi demo aja)"
-            t "(bentar... kok gak ada suaranya ya si primadona itu)"
+
+            t "tuh lewat gang yang khusus buat motor didepan"
+
             hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "oh, emang nanti nembus mana kalau lewat situ?"
+
+            hide alice_worried 
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            t "gak jauh sini, tetep masuk jalan ini. Cuman semoga aja gak macet didepan"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "oh, kalau gitu lewat situ aja"
+
+            hide alice_worried 
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            t "sip"
+
+            hide taishiro schoolwinter happy
+
+            "lupun akhirnya lewat jalan situ"
+
+            "setelah masuk, lu mengikuti jalan dan menghabiskan waktu 5 menit untuk menyusuri itu jalan"
+
+            "setelah menyusuri jalan akhirnya didepan lu udah ada pintu keluarnya"
+
+            "namun......."
+
+            hide alice_worried 
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            t "(loh.....)"
+
+            "lupun kaget karena saaat keluar gang macetnya tetap ada dan malah lebih parah karena lu sekarang gak bisa putar balik. Motor lu sekarang ada di tengah tengah kemacetan, mau gak mau lu harus nunggu"
+            jump game_over9
+
+        "tetap sabar nunggu, siapa tau nanti didepan gak macet" :
+
+            hide alice_worried 
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            t "(nunggu aja kali ya siapa tau nanti gak macet)"
+
+            t "eh lis, lu nunggu rada lama gapapa? soalnya macet"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "oh ya, gapapa"
+
+            hide alice_worried 
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            "lu akhirnya memutuskan buat nunggu macet"
+
+            "lu nunggu sampe 5 menit tapi lom juga gerak"
+
+            show taishiro beachwear normal
+
+            t "(jirlah udah 5 menit masih lom gerak, hmmm tunggu aja kali)"
+
+            hide alice_worried 
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            "15 menit berlalu, tapi  belum juga gerak"
+
+            "lu nunggu dengan sabar"
+
+            "30 menit berlalu, akhirnya gerak walaupun cuman beberapa cm"
+
+            hide alice_worried 
+            show taishiro schoolwinter angry at zoom_taishiro
+
+            t "(AKHHH APES BANGET DAH CUMAN NUNGGU MAJU SECUIL SAMPE 30 MENIT)"
+
+            "lu masih sabar walaupun sedikit emosi dan lu ngajak ngobrol lisa biar gak bosen menghadapi macet jakarta"
+
+            "dan ya"
+
+            "lu sampe sampe malem karena harus sabar nungguin macet"
+            jump game_over10
+
+        "muter jalan walaupun rada jauh" :
+
+            hide alice_worried 
+            show taishiro schoolwinter happy at zoom_taishiro
+            
+            t "( muter jalan aja kali ya, tapi ngabisin waktu 1 jam lebih buat bolak balik, mana sekarang udah jam 3 sedangkan latihan basket mulai jam 4 sore )"
+
+            t "(hmmm yaudahlah muter aja daripada harus nunggu macet)"
+
+            t "lis, mau muter jalan aja gak? tapi lumayan jauh"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "boleh, tapi lu capek gak muter jalan jauh?"
+
+            hide alice_worried 
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            t "gak kok, yaudah ya muter jalan aja"
+
+            hide taishiro schoolwinter happy
+
+            "akhirnya lu mutusin buat muter jalan walaupun jaraknya nambah jauh"
+            jump good_ending5
+
+        "istirahat di tempat seperti tempat makan di pinggir jalan" :
+
+            hide alice_worried 
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            t "hmmm lis, mau istirahat dulu gak? soalnya ini macet"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "boleh deh, mau istirahat dimana emangnya?"
+
+            hide alice_worried 
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            t "itu dipinggir jalan ada warung makan"
+
+            hide taishiro schoolwinter happy
+            show alice_worried at zoom_alice
+
+            l "boleh deh, takut lunya capek kalau lanjut ngendarain motor"
+
+            hide alice_worried 
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            t "hehe, yaudah gw kesana ya"
+
+            hide taishiro schoolwinter happy
+
+            "lu akhirnya menuju ke warung itu"
+
+            "dan lu berdua mesan makanan dan es sambil mengobrol"
+
+            "sangking asiknya ngobrol lu gak nyadar kalau hari udah mulai sore"
+
+            hide alice_worried 
+            show taishiro schoolwinter happy at zoom_taishiro
+
+            
+            hide taishiro schoolwinter happy
+
+            "lu cek jam dan ternyata jarum jam sudah menunjukkan bawa sekarang pukul 17:30"
+
+            hide alice_worried 
             show taishiro schoolwinter surprised at zoom_taishiro
-            t "........"
+
+            t "(anjirlah udah jam segini)"
+
+            t "eh lis, udah jam segini balik yok, udah mau malem"
+
             hide taishiro schoolwinter surprised
-            "saat lu nengok ke murid baru itu, ternyata dia udah dikepung sama anak anak kelas lain yang penasaran dengannya terutama cowok nakal yang sering bolos kelas"
-            jump game_over5
+            show alice_worried at zoom_alice
 
+            l "yaudah yok pulang"
 
-label game_over4:
+            hide alice_worried
+
+            "akhirnya lu berdua pulang dan lu bolos ekskul"
+            jump game_over11
+
+label game_over9:
     scene bg BLACK
     with fade
-    stop music
-    play music "audio/marioGV.ogg" volume 1.0 noloop
+    play sound "marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
-    n "kelazzz king malah ditinggalin wkwkwk"
-    n "kalau lu lagi bareng cewek jangan langsung main ninggalin ya kids apalagi itu murid baru yang langsung jadi primadona sekolah"
-    n "lu sebagai cowok mumpung bareng dia setidaknya lindungi dari keramaian agar gak dikepung buaya kelaparan lagi"
-    n "kan lu tau dia aja tadi risih dideketin banyak cowok"
-    n "lain kali jangan gitu ya kids kan ngambek jadinya dia ke lu malah berujung ilfeel, NT dah jones"
+    n "aduh, pikir pikir dulu dong udah tau macet panjang yakali lu lewat jalan pintas yang ujungnya lewat jalan yang sama"
+    n "ya jelas masih macetlah, kan lu liat sendiri macetnya kayak kereta"
+    n "dan parahnya lagi lu gak bisa putar balik"
     menu:
         "Memulai Ulang (Restart)":
             jump start
@@ -466,16 +549,15 @@ label game_over4:
             return
     with fade
 
-label game_over5:
+label game_over10:
     scene bg BLACK
     with fade
-    stop music
-    play music "audio/marioGV.ogg" volume 1.0 noloop
+    play sound "marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
-    n "hmmm bagus sih ajak ke kantin sekalian study tour sekolah, tapi diakan murid baru yang langsung terkenal karena kecantikannya"
-    n "dalam beberapa jam aja dia udah jadi bahan perbincangan satu sekolah"
-    n "lu malah bawa ke kumpulan monyet monyet yang sering bolos kelas buat ke kantin"
-    n "kali ini jawaban tidak terlalu salah tapi mikir kondisi kids, NT"
+    n "wkwkwk si bro masih sabar dalam menghadapi macet"
+    n "lu mau nunggu kapan kalau macet panjang "
+    n "sinetron tukang bubur naik haji aja keburu tamat daripada nungguin macet panjang gitu"
+    n "coba lagi tuan penyabar"
     menu:
         "Memulai Ulang (Restart)":
             jump start
@@ -483,91 +565,65 @@ label game_over5:
             return
     with fade
 
-label good_ending3 :
-
-    scene bg rooftop
+label game_over11:
+    scene bg BLACK
+    with fade
+    play sound "marioGV.mp3"
+    show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
+    n "bagus sih ke warung makan dulu daripada nunggu macet"
+    n "tapi yang gak bagusnya lu ngobrol sampe lupa waktu. Apalagi ada temen lu nungguin di tempat ekskul"
+    n "coba lagi"
+    menu:
+        "Memulai Ulang (Restart)":
+            jump start
+        "Kembali ke Lobby (Main Menu)":
+            return
     with fade
 
+label good_ending5:
+
+    scene bg rumahlisa
+    with fade
+
+    "setelah hampir 30 menitan akhirnya lu sampe ke rumah lisa"
+
+    "saat liat rumahnya lu sedikit kaget"
+
+    hide alice_worried 
     show taishiro schoolwinter happy at zoom_taishiro
-    t "nah disini tempat favorit gw, yaaa biasanya gw sering kesini nuat habisin waktu pas jam istirahat aja"
-    
-    hide taishiro schoolwinter happy
-    show alice_worried at zoom_alice
 
-    l "wah, bagus juga ya pemandangan dari atas sama sejuk juga kalau disini"
+    t "(buset nih rumah bagus banget anak orang kaya pasti)"
 
-    show taishiro schoolwinter happy at zoom_taishiro
-    hide alice_worried
-    t "ya begitulah"
-
-    hide taishiro schoolwinter happy
-    show taishiro schoolwinter surprised at zoom_taishiro
-
-    t "(eh bentar, gw baru inget kalau gw belum tau namanya)"
-
-    t "oh iya kita belum kenalan ya?"
-
-    hide taishiro schoolwinter surprised
-    show alice_worried at zoom_alice
-
-    l "eh iya namalu siapa?"
-
-    show taishiro schoolwinter happy at zoom_taishiro
-    hide alice_worried
-
-    t "kenalin nama gw Kenzo panggil aja ken, namalu?"
+    t "hmm lis gw duluan ya"
 
     hide taishiro schoolwinter happy
     show alice_worried at zoom_alice
 
-    l "oh, nama gw Alisa panggil aja Lisa, salken"
-    
+    l "eh, mampir dululah sini"
+
+    hide alice_worried 
     show taishiro schoolwinter happy at zoom_taishiro
-    hide alice_worried
 
-    t "salken juga"
+    t "waduh nanti aja deh, lagi buru buru gwnya lagian gak enak kalau mendadak mampir takutnya ganggu orang rumah"
 
-    t "btw lu pindahan darimana?"
-    
-    hide taishiro schoolwinter happy
-    show alice_worried at zoom_alice
-
-    l "oh gw pindahan dari sekolah SMA seirin di Jepang"
-
-    show taishiro schoolwinter surprised at zoom_taishiro
-    hide alice_worried
-
-    t "hah? Jepang? lu tinggal di Jepang?"
+    t "lain waktu aja ya, bye ketemu lagi besok"
 
     hide taishiro schoolwinter happy
     show alice_worried at zoom_alice
 
-    l "ya dari lahir gw tinggal di Jepang soalnya ibu gw asli Jepang"
-
-    show taishiro schoolwinter happy at zoom_taishiro
-    hide alice_worried
-
-    t "(hmmmm pantes, turunan orang jepang)"
-
-    t "tapi lu kok mahir bahasa indonesia apalagi bahasa gaul di Jakarta?"
+    l "ya, hati hati"
 
     hide taishiro schoolwinter happy
-    show alice_worried at zoom_alice
 
-    l "haha iya, soalnya gw pas SD kelas 1 sampai 6 tinggal di Indonesia sama gw juga diajarin sama ayah gw bahasa indo sama bahasa gaulnya juga diajarin jadi lancar deh"
+    scene bg jalan
 
-    l "ayah gw juga lahir di Jakarta"
+    "lu ngendarain motor lu ngebut menuju tempat ekskul basket soalnya takut telat"
 
-    show taishiro schoolwinter happy at zoom_taishiro
-    hide alice_worried
-
-    t "owalah, pantes lancar"
-    
-    hide taishiro schoolwinter happy
-
-    "merekapun berbincang bincang sampe jam istirahat selesai"
-
-    "setelah bel berbunyi mereka berdua menuju kelas lagi dan belajar sampai bel pulang"
-
-    $ persistent.chapter_completed = max(persistent.chapter_completed, 2)
+    $ persistent.chapter_completed = max(persistent.chapter_completed, 3)
     jump chapter_menu
+    
+    stop music
+
+label chapter4_start:
+    "coming soon"
+    return
