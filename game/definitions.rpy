@@ -1,14 +1,14 @@
 # Data chapter: list of dicts dengan title, description, dan image untuk setiap chapter
 default chapters = [
     {
-        "title": _("Prolog: Pertemuan Pertama"),
-        "description": _("tahun kemarin tahun yang membosankan. Namun, tahun ini ada sesuatu yang merubah hidup lo dan pertemuan pertama yang akan mengubah nasib lo yang membosankan."),
+        "title": _("Prolog: Kehidupan yang kelam"),
+        "description": _("Lu hanya seorang pengedar barang terlarang yang pensiun dari kerjaanlu. namun keberhentian lu malah membuat lu kena malapetaka"),
         "image": "images/bg/apartment a exterior day.png",
         "label": "prolog_start"
     },
     {
-        "title": _("Chapter 2: kesialan yang mengejutkan"),
-        "description": _("di hari ini lu ngalamin sial yaitu telat bangun, lu bergegas berangkat sekolah namun ada hal yang tak terduga"),
+        "title": _("Chapter 2: Perubahan pertama"),
+        "description": _("kejadian yang tidak terduga, lu pikir akan mati tapi malah balik ke masa lalu, apakah ini keajaiban untuk lu merubah diri dan kembali ke jalan yang lurus?"),
         "image": "images/chapter2.png",
         "label": "chapter1_start"
     },
@@ -86,7 +86,10 @@ transform zoom_taishiro:
     yalign 1.0
 
 # Karakter
-define t = Character("kenzo", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
+define r = Character("Rio", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
+define c = Character("Cecan", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
+define o = Character("Osis", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
+define k = Character("Kael", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
 define n = Character("narator", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
 define l = Character("Lisa", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
 define s = Character("Satpam", color="#ffffff", what_slow_cps=20, callback=typewriter_callback) 

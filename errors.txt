@@ -2,49 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/chapter2.rpy", line 364: expected statement.
-    l _(".........")
-       ^
+File "game/chapter1.rpy", line 293: unterminated string literal
+    k "wah sialan lu asu, mana ada sesama ras saling ngatain hahaha
 
-File "game/chapter2.rpy", line 366: expected statement.
-    l _("eh, kok lu bisa tau?")
-       ^
-
-File "game/chapter2.rpy", line 376: expected statement.
-    l _(".........")
-       ^
-
-File "game/chapter2.rpy", line 381: expected statement.
-    l _(".........")
-       ^
-
-File "game/chapter2.rpy", line 424: expected statement.
-    l _("ehh, gw bol-")
-       ^
-
-File "game/chapter2.rpy", line 427: expected statement.
-    l _("......")
-       ^
-
-File "game/chapter3.rpy", line 278: expected statement.
-    n _("waduh NT banget, walaupun lagi buru buru minimal tawarin jalan bareng ke gerbang bukannya ninggalin")
-       ^
-
-File "game/chapter3.rpy", line 279: expected statement.
-    n _("gak peka emang nih orang")
-       ^
-
-File "game/chapter3.rpy", line 280: expected statement.
-    n _("coba lagi biar peka jadi orang")
-       ^
-
-File "game/chapter3.rpy", line 293: expected statement.
-    n _("kebangetan nih orang udah ngebohong, bolos basket, ninggalin temen lu lagi")
-       ^
-
-File "game/chapter3.rpy", line 294: expected statement.
-    n _("itu temen lu nungguin lu, parah sih di PHP gak respect banget")
-       ^
-
-Ren'Py Version: Ren'Py 8.5.2.26010301
-Thu Feb 26 15:56:33 2026
+Ren'Py Version: Ren'Py 8.5.3.26051504
+Sat Jun 13 13:34:46 2026

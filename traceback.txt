@@ -1,23 +1,33 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 8, in script
-    jump prolog_start_start
-renpy.script.LabelNotFound: could not find label 'prolog_start_start'.
+  File "game/definitions.rpy", line 90, in script
+    define c = cha
+  File "game/definitions.rpy", line 90, in <module>
+    define c = cha
+               ^^^
+NameError: name 'cha' is not defined. Did you mean: 'chr'?
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/script.rpy", line 8, in script
-    jump prolog_start_start
-  File "renpy/ast.py", line 1938, in execute
-    rv = renpy.game.script.lookup(target)
-         ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
-  File "renpy/script.py", line 1217, in lookup
-    raise LabelNotFound(original)
-renpy.script.LabelNotFound: could not find label 'prolog_start_start'.
+  File "game/definitions.rpy", line 90, in script
+    define c = cha
+  File "renpy/ast.py", line 2473, in execute
+    self.set()
+    ~~~~~~~~^^
+  File "renpy/ast.py", line 2485, in set
+    value = renpy.python.py_eval_bytecode(self.code.bytecode)
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1301, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "game/definitions.rpy", line 90, in <module>
+    define c = cha
+               ^^^
+NameError: name 'cha' is not defined. Did you mean: 'chr'?
 
 Windows-11-10.0.26200-SP0 AMD64
 Ren'Py 8.5.3.26051504
 DREAM 1.0
-Thu Jun 11 20:19:18 2026
+Sat Jun 13 13:26:10 2026
