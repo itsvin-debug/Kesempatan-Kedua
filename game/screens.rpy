@@ -214,65 +214,63 @@ screen say(who, what):
             xalign 0.5
             yalign 0.45
             xsize 800
-            ysize 200
-            background None  ## Pastikan window luar transparan
+            yminimum 200
+            ysize None
+            background Solid("#080814ee")
+            padding (0, 0, 0, 0)
 
-            has fixed
-
-            ## Layer 1: Background Base (Gelap Navy sedikit transparan)
+            # Top border line
             frame:
                 xfill True
-                yfill True
-                background Solid("#080814ee")
-                
-            ## Layer 2: Aksen Sudut (Bingkai tipis elegan)
+                ysize 1
+                yalign 0.0
+                background Solid("#ffffff30")
+
+            # Bottom border line
             frame:
                 xfill True
-                yfill True
-                background Solid("#00000000")
-                ## Garis atas
-                frame:
-                    xfill True
-                    ysize 1
-                    yalign 0.0
-                    background Solid("#ffffff30")
-                ## Garis bawah
-                frame:
-                    xfill True
-                    ysize 1
-                    yalign 1.0
-                    background Solid("#ffffff30")
+                ysize 1
+                yalign 1.0
+                background Solid("#ffffff30")
 
-            ## Layer 3: Aksen kiri merah muda 
+            # Left pink accent
             frame:
-                xysize (4, 150)
-                yalign 0.5
+                xsize 4
+                yfill True
+                top_margin 25
+                bottom_margin 25
                 xpos 0
                 background Solid("#ff4b6e")
 
-            ## Layer 4: Aksen kanan merah muda (simetris)
+            # Right pink accent
             frame:
-                xysize (4, 150)
-                yalign 0.5
+                xsize 4
+                yfill True
+                top_margin 25
+                bottom_margin 25
                 xalign 1.0
                 background Solid("#ff4b6e")
 
-            ## Opsi Hiasan Header Kecil
-            text "◆    N  A  R  A  S  I    ◆":
-                color "#ffffff55"
-                size 12
-                bold True
+            # Content container (auto-resizes based on text height)
+            vbox:
+                yalign 0.0
                 xalign 0.5
-                ypos 18
-                kerning 2.0
-
-            ## Layer 5: Teks Narasi
-            ## Kita beri xpos dan ypos langsung di elemen ini agar PASTI tidak mepet kotak!
-            text what id "what":
-                style "say_narrator"
-                xpos 60
-                ypos 55
                 xsize 680
+                top_margin 18
+                bottom_margin 25
+                spacing 25
+
+                text "◆    N  A  R  A  S  I    ◆":
+                    color "#ffffff55"
+                    size 12
+                    bold True
+                    xalign 0.5
+                    kerning 2.0
+
+                text what id "what":
+                    style "say_narrator"
+                    xsize 680
+                    xalign 0.5
 
     ## =========================================================
     ## TOMBOL KE LOBBY — Pojok kanan atas layar
@@ -431,59 +429,92 @@ screen choice(items):
             spacing 16
 
             for i in items:
-                ## Setiap pilihan = kartu dengan efek hover
-                button at choice_hover_anim:
-                    action i.action
-                    xsize 720
-                    ysize 75
+                ## Setiap pilihan = kartu dengan efek hover jika bisa diklik
+                if i.action is not None:
+                    button at choice_hover_anim:
+                        action i.action
+                        xsize 720
+                        ysize 75
 
-                    ## Latar default: kaca gelap semi-transparan
-                    background Frame(
-                        Solid("#1a0a1288"),
-                        15, 15
-                    )
+                        ## Latar default: kaca gelap semi-transparan
+                        background Frame(
+                            Solid("#1a0a1288"),
+                            15, 15
+                        )
 
-                    ## Glow bercahaya saat hover
-                    hover_background Frame(
-                        Solid("#cc335544"),
-                        15, 15
-                    )
+                        ## Glow bercahaya saat hover
+                        hover_background Frame(
+                            Solid("#cc335544"),
+                            15, 15
+                        )
 
-                    ## Foreground: border glow shimmer saat hover
-                    foreground Frame(
-                        Solid("#00000000"),
-                        15, 15
-                    )
-                    hover_foreground Frame(
-                        Solid("#ff408020"),
-                        15, 15
-                    )
+                        ## Foreground: border glow shimmer saat hover
+                        foreground Frame(
+                            Solid("#00000000"),
+                            15, 15
+                        )
+                        hover_foreground Frame(
+                            Solid("#ff408020"),
+                            15, 15
+                        )
 
-                    padding (30, 0, 30, 0)
+                        padding (30, 0, 30, 0)
 
-                    ## Isi kartu: ikon + teks
-                    hbox:
-                        yalign 0.5
-                        spacing 18
-
-                        ## Garis aksen kiri (selalu ada)
-                        frame:
-                            xysize (5, 44)
-                            background Solid("#cc335599")
-                            hover_background Solid("#ff6090")
+                        ## Isi kartu: ikon + teks
+                        hbox:
                             yalign 0.5
+                            spacing 18
 
-                        ## Ikon berlian (muncul saat hover via alpha)
-                        text "❯" color "#e0709088" hover_color "#ff8aaa" size 22 yalign 0.5
+                            ## Garis aksen kiri (selalu ada)
+                            frame:
+                                xysize (5, 44)
+                                background Solid("#cc335599")
+                                hover_background Solid("#ff6090")
+                                yalign 0.5
 
-                        ## Teks pilihan
-                        text i.caption:
-                            color "#f0d0da"
-                            hover_color "#ffffff"
-                            size 26
-                            bold False
+                            ## Ikon berlian (muncul saat hover via alpha)
+                            text "❯" color "#e0709088" hover_color "#ff8aaa" size 22 yalign 0.5
+
+                            ## Teks pilihan
+                            text i.caption:
+                                color "#f0d0da"
+                                hover_color "#ffffff"
+                                size 26
+                                bold False
+                                yalign 0.5
+                                font gui.text_font
+                else:
+                    ## Tampilan ketika pilihan terkunci / disabled
+                    button:
+                        action None
+                        xsize 720
+                        ysize 75
+                        background Frame(
+                            Solid("#22222288"),
+                            15, 15
+                        )
+                        padding (30, 0, 30, 0)
+
+                        hbox:
                             yalign 0.5
-                            font gui.text_font
+                            spacing 18
+
+                            ## Garis aksen kiri abu-abu terkunci
+                            frame:
+                                xysize (5, 44)
+                                background Solid("#555555")
+                                yalign 0.5
+
+                            ## Ikon gembok untuk menu terkunci
+                            text "🔒" color "#777777" size 20 yalign 0.5
+
+                            ## Teks pilihan terkunci (warna abu-abu redup)
+                            text i.caption:
+                                color "#777777"
+                                size 26
+                                bold False
+                                yalign 0.5
+                                font gui.text_font
 
 
 ## Style minimal — layout diatur manual di screen di atas

@@ -1,6 +1,13 @@
+default ch1_failed_osis = False
+default ch1_failed1 = False
+default ch1_failed2 = False
+
 label chapter1_start:
 
     play music "audio/BACKSOUNDKKC.mp3" volume 0.1
+
+    scene bg sekolahgrtutup
+    with fade
 
     "setelah sampai disekolah, lu parkir terlebih dahulu motornya dan mulai memasuki gerbang sekolah"
 
@@ -148,6 +155,9 @@ label chapter1_start:
 
     "dan kesimpulan liar lu itu benar ternyata"
 
+label ch1_checkpoint1:
+    scene bg sekolahgrtutup
+    with fade
     o "WOI CEPET SINI MALAH MELAMUN"
 
     "lu penasaran apa yang terjadi jika diri lu maju ke depan, akhirnya lu memutuskan untung maju ke depan"
@@ -160,7 +170,7 @@ label chapter1_start:
 
     menu:
 
-        "menolak perintah osis tersebut":
+        "menolak perintah osis tersebut" if not ch1_failed_osis:
             
             r "lah ngapain push up? kita salah apa?"
 
@@ -175,6 +185,7 @@ label chapter1_start:
             o "WAH BERANI BANGET NIH ORANG"
 
             "akhirnya lu debat lagi dengan osis tersebut karena lu nolak hukuman push up"
+            $ ch1_failed_osis = True
             jump game_over1
 
         "ikutin perintah osis itu":
@@ -197,7 +208,7 @@ label game_over1:
     n "waduh bro jangan ribut ama osis mending kita turutin aja apa yang dia suruh, jangan keras kepala nanti alhasil lu malah ribut lagi"
     menu:
         "Memulai Ulang (Restart)":
-            jump start
+            jump ch1_checkpoint1
         "Kembali ke Lobby (Main Menu)":
             return
     with fade
@@ -215,6 +226,9 @@ label good_ending1:
     r "ya kedengeran lah dongo lu suaranya berisik tadi sama kita tadi baris di depan"
 
     "akhirnya setelah selesai lu sekarang pembagian gugus dan lu berdua sekelas lagi"
+
+    scene bg kelas
+    with fade
 
     r "yah gila udah satu sekolah sekarang satu gugus lagi, heran dah gua"
 
@@ -294,6 +308,87 @@ label good_ending1:
 
     r "hahaha"
 
-    i "WOI LU BERDUA BERISIK BANGET SIH DARI TADI!!"
+    label ch1_checkpoint2:
+
+    o "WOI LU BERDUA BERISIK BANGET SIH DARI TADI!!"
+
+    "lu berdua reflek menoleh ke arah sumber suara tersebut"
+
+    k "yah dia marah lagi, lagi pms bukan sih"
+
+    r "gak tau gua juga, tapi kayaknya iya deh"
+
+    o "LU BERDUA DARI TADI NGOBROL MULU GUA PERHATIIN"
+
+    r "...."
+
+    menu :
+
+        "bentak balik osis itu" if not ch1_failed1:
+
+            r "KITA GAK NGOBROL LU SENSI AMAT SIH JADI ORANG, PERSONAL LU? MENTANG - MENTANG OSIS LU JADI BISA MARAH - MARAH GITU?"
+
+            o "SONGONG YA LU MASIH BARU JUGA"
+
+            r "YA LU DARI TADI MANCING EMOSI MULU"
+
+            "akhirnya lu berdua debat dan adu bacot"
+
+            $ ch1_failed1 = True
+            jump game_over2
+
+        "minta maaf ama osis itu":
+            
+            r "ya bang maaf"
+
+            k "ya gua juga minta maaf bang"
+
+            r "udah ikutin aja"
+
+            "akhirnya lu berdua ngelakuin apa yang osis tadi suruh"
+
+            jump good_ending2
+
+        "hajar osis itu" if not ch1_failed2:
+            
+            "lu dorong meja terus maju ke arah osis itu"
+
+            "dan lu mengarahkan tinju ke arah osis itu dan osis itu terpental kebelakang"
+
+            $ ch1_failed2 = True
+            jump game_over3
+            
+
+label game_over2:
+    scene bg BLACK
+    with fade
+    play sound "marioGV.mp3"
+    show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
+    n "waduh bro jangan ribut ama osis mending kita turutin aja apa yang dia suruh, jangan keras kepala nanti alhasil lu malah ribut lagi"
+    menu:
+        "Memulai Ulang (Restart)":
+            jump ch1_checkpoint2
+        "Kembali ke Lobby (Main Menu)":
+            return
+    with fade
+
+label game_over3:
+    scene bg BLACK
+    with fade
+    play sound "marioGV.mp3"
+    show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
+    n "waduh gila dihajar gak tuh osisnya, chill aja bro yang ada kalau lu hajar itu osis lu bakal dimusuhin sama semua osis. Hadeh"
+    menu:
+        "Memulai Ulang (Restart)":
+            jump ch1_checkpoint2
+        "Kembali ke Lobby (Main Menu)":
+            return
+    with fade
+
+
+label good_ending2:
 
     
+
+
+

@@ -1,33 +1,46 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/definitions.rpy", line 90, in script
-    define c = cha
-  File "game/definitions.rpy", line 90, in <module>
-    define c = cha
-               ^^^
-NameError: name 'cha' is not defined. Did you mean: 'chr'?
+NameError: name 't' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "game/prolog.rpy", line 30, in script
+    t "perkenalkan, gw Kenzo Algahra sering dipanggil kenzo atau ken. gw berusia 17 tahun"
+Exception: Sayer 't' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/definitions.rpy", line 90, in script
-    define c = cha
-  File "renpy/ast.py", line 2473, in execute
-    self.set()
-    ~~~~~~~~^^
-  File "renpy/ast.py", line 2485, in set
-    value = renpy.python.py_eval_bytecode(self.code.bytecode)
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "renpy/ast.py", line 625, in eval_who
+    return renpy.python.py_eval(who)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "renpy/python.py", line 1308, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
   File "renpy/python.py", line 1301, in py_eval_bytecode
     return eval(bytecode, globals, locals)
            ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/definitions.rpy", line 90, in <module>
-    define c = cha
-               ^^^
-NameError: name 'cha' is not defined. Did you mean: 'chr'?
+  File "<none>", line 1, in <module>
+NameError: name 't' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "game/prolog.rpy", line 30, in script
+    t "perkenalkan, gw Kenzo Algahra sering dipanggil kenzo atau ken. gw berusia 17 tahun"
+  File "renpy/ast.py", line 2935, in execute
+    Say.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "renpy/ast.py", line 956, in execute
+    who = eval_who(self.who, self.who_fast)
+          ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/ast.py", line 627, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who)
+Exception: Sayer 't' is not defined.
 
 Windows-11-10.0.26200-SP0 AMD64
 Ren'Py 8.5.3.26051504
 DREAM 1.0
-Sat Jun 13 13:26:10 2026
+Sat Jun 13 13:52:31 2026

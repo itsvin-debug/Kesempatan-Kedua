@@ -1,4 +1,4 @@
-﻿## File ini berisi opsi yang dapat di ubah untuk mengkustomisasi game mu.
+## File ini berisi opsi yang dapat di ubah untuk mengkustomisasi game mu.
 ##
 ## Baris yang di awali dengan dua 'tanda '#' adalah komentar, dan kamu tidak
 ## seharusnya menghapus nya. Baris dengan satu '#' adalah kode yang di
@@ -215,6 +215,9 @@ init python:
 
 ## Menonaktifkan fitur geser kembali ke lobby (Rollback dan Menu Klik Kanan)
 define config.rollback_enabled = False
+
+## Mengaktifkan menu include disabled agar pilihan yang tidak memenuhi syarat tetap tampil tetapi tidak bisa diklik (locked)
+define config.menu_include_disabled = True
 
 init python:
     # Menghapus klik kanan dari game menu
