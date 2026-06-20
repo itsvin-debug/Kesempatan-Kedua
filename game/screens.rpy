@@ -124,7 +124,7 @@ screen say(who, what):
         ## DIALOG KARAKTER — speech bubble + panah ke kiri
         ## =====================================================
         vbox:
-            xalign 0.5
+            xalign 0.65
             yalign 0.68
             xsize 960
             spacing 0
@@ -211,11 +211,12 @@ screen say(who, what):
         ## =====================================================
         window:
             id "window"
+            style "say_narrator_window"
             xalign 0.5
             yalign 0.45
             xsize 800
             yminimum 200
-            ysize None
+            yfill False
             background Solid("#080814ee")
             padding (0, 0, 0, 0)
 
@@ -253,12 +254,12 @@ screen say(who, what):
 
             # Content container (auto-resizes based on text height)
             vbox:
-                yalign 0.0
+                yalign 0.5
                 xalign 0.5
-                xsize 680
-                top_margin 18
-                bottom_margin 25
+                xmaximum 680
                 spacing 25
+
+                null height 18
 
                 text "◆    N  A  R  A  S  I    ◆":
                     color "#ffffff55"
@@ -269,8 +270,10 @@ screen say(who, what):
 
                 text what id "what":
                     style "say_narrator"
-                    xsize 680
+                    xmaximum 680
                     xalign 0.5
+
+                null height 25
 
     ## =========================================================
     ## TOMBOL KE LOBBY — Pojok kanan atas layar
@@ -293,6 +296,7 @@ style say_label is default
 style say_dialogue is default
 style say_thought is default
 style say_narrator is default
+style say_narrator_window is default
 
 style namebox is default
 style namebox_label is say_label

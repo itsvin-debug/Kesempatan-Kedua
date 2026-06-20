@@ -1,0 +1,183 @@
+﻿Ren'Py 8.5.3.26051504 lint report, generated at: Sat Jun 20 18:39:41 2026
+
+game/chapter2.rpy:9 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:21 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:33 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:34 The image tag 'alice_worried' is not the prefix of a declared image, nor was it used in a show statement before this hide statement.
+
+game/chapter2.rpy:40 'alice_worried' is not an image.
+
+game/chapter2.rpy:46 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:52 'alice_worried' is not an image.
+
+game/chapter2.rpy:56 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:64 'alice_worried' is not an image.
+
+game/chapter2.rpy:68 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:78 'alice_worried' is not an image.
+
+game/chapter2.rpy:83 'taishiro schoolwinter surprised' is not an image.
+
+game/chapter2.rpy:92 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:99 'alice_worried' is not an image.
+
+game/chapter2.rpy:112 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:117 'alice_worried' is not an image.
+
+game/chapter2.rpy:121 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:133 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:138 'alice_worried' is not an image.
+
+game/chapter2.rpy:142 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:148 'alice_worried' is not an image.
+
+game/chapter2.rpy:152 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:158 'alice_worried' is not an image.
+
+game/chapter2.rpy:162 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:170 'alice_worried' is not an image.
+
+game/chapter2.rpy:174 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:180 'alice_worried' is not an image.
+
+game/chapter2.rpy:184 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:190 'alice_worried' is not an image.
+
+game/chapter2.rpy:194 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:201 'alice_worried' is not an image.
+
+game/chapter2.rpy:205 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:211 'alice_worried' is not an image.
+
+game/chapter2.rpy:215 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:227 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:232 'alice_worried' is not an image.
+
+game/chapter2.rpy:236 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:242 'alice_worried' is not an image.
+
+game/chapter2.rpy:246 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:310 'taishiro schoolwinter angry' is not an image.
+
+game/chapter2.rpy:318 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:323 'alice_worried' is not an image.
+
+game/chapter2.rpy:328 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:343 'taishiro schoolwinter angry' is not an image.
+
+game/chapter2.rpy:353 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:358 'alice_worried' is not an image.
+
+game/chapter2.rpy:363 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:368 'alice_worried' is not an image.
+
+game/chapter2.rpy:373 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:378 'alice_worried' is not an image.
+
+game/chapter2.rpy:383 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:398 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:408 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:415 'alice_worried' is not an image.
+
+game/chapter2.rpy:420 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:426 'taishiro beachwear normal' is not an image.
+
+game/chapter2.rpy:431 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:440 'taishiro schoolwinter angry' is not an image.
+
+game/chapter2.rpy:454 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:463 'alice_worried' is not an image.
+
+game/chapter2.rpy:468 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:480 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:485 'alice_worried' is not an image.
+
+game/chapter2.rpy:490 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:495 'alice_worried' is not an image.
+
+game/chapter2.rpy:500 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:513 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:521 'taishiro schoolwinter surprised' is not an image.
+
+game/chapter2.rpy:528 'alice_worried' is not an image.
+
+game/chapter2.rpy:593 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:600 'alice_worried' is not an image.
+
+game/chapter2.rpy:605 'taishiro schoolwinter happy' is not an image.
+
+game/chapter2.rpy:612 'alice_worried' is not an image.
+
+game/definitions.rpy:119 Image bg kelass uses file 'bg/smp_classroom1_day1.png', which is not loadable.
+
+game/definitions.rpy:120 Image bg kelas_sore uses file 'bg/smp_classroom1_evening1.png', which is not loadable.
+
+game/definitions.rpy:121 Image bg taman_sore uses file 'bg/park_s1_evening.png', which is not loadable.
+
+game/definitions.rpy:122 Image bg opening uses file 'bg/smp_classroom1_evening1.png', which is not loadable.
+
+game/definitions.rpy:123 Image bg kamartidurkarakteru uses file 'bg/personal room c day.png', which is not loadable.
+
+game/definitions.rpy:124 Image bg sekolahgrtutup uses file 'bg/smp_front_day3c.png', which is not loadable.
+
+game/definitions.rpy:125 Image bg gerbangkelas uses file 'bg/smp_classroom4_day2.png', which is not loadable.
+
+game/definitions.rpy:126 Image bg tanggakelas uses file 'bg/school a stairs st2 day.png', which is not loadable.
+
+game/definitions.rpy:127 Image bg lorongkelas uses file 'bg/school a hallway st2 day.png', which is not loadable.
+
+game/definitions.rpy:128 Image bg rooftop uses file 'bg/school a s2st2 day.png', which is not loadable.
+
+game/definitions.rpy:129 Image bg jalan uses file 'bg/city a s3st2 day.png', which is not loadable.
+
+game/definitions.rpy:130 Image bg rumahlisa uses file 'bg/house a day.png', which is not loadable.
+
+
+Statistics:
+
+The game contains 330 dialogue blocks, containing 2,664 words and 15,101
+characters, for an average of 8.1 words and 46 characters per block.
+
+The game contains 13 menus, 14 images, and 25 screens.
+
+
+Lint is not a substitute for thorough testing. Remember to update Ren'Py
+before releasing. New releases fix bugs and improve compatibility.

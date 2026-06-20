@@ -620,9 +620,7 @@ label good_ending5:
     "lu ngendarain motor lu ngebut menuju tempat ekskul basket soalnya takut telat"
 
     $ persistent.chapter_completed = max(persistent.chapter_completed, 3)
-    jump chapter_menu
-    
-    stop music
+    return
 
 label chapter4_start:
     "coming soon"

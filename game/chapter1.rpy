@@ -4,9 +4,9 @@ default ch1_failed2 = False
 
 label chapter1_start:
 
-    play music "audio/BACKSOUNDKKC.mp3" volume 0.1
+    play music "audio/backsoundgame.mp3" volume 0.1
 
-    scene bg sekolahgrtutup
+    scene bg 
     with fade
 
     "setelah sampai disekolah, lu parkir terlebih dahulu motornya dan mulai memasuki gerbang sekolah"
@@ -19,7 +19,11 @@ label chapter1_start:
 
     "ada yang memukul pundak Rio dari belakang"
 
+    show rio shock at rio_left
+
     r "eh-"
+
+    hide rio shock with dissolve
 
     "lu merasa tidak asing dengan tepukan itu"
 
@@ -388,7 +392,88 @@ label game_over3:
 
 label good_ending2:
 
+    c "udah - udah kal namanya juga masa perkenalan, biarin ajalah mereka kenalan"
+
+    o "hhh, iya - iya"
+
+    k "jinak jir dia"
+
+    r "udah ah diem"
+
+    "sekarang osis cewek itu mulai perkenalan diri"
+
+    c "halo perkenalkan nama aku Cila amelia aku kelasnya di 10 ipa 2"
+
+    "spontan semua bilang salam kenal"
+
+    "namun..."
+
+    "gebrakan beruk sebelah lu ada lagi"
+
+    o "kak aku mau nanya"
+
+    c "boleh, mau nanya apa?"
+
+    k "kak udah ada pacar belum?"
+
+    "seisi ruangan spontan melihat kael termasuk lu"
+
+    r "hadehhh ada aja gebrakannya"
+
+    o "heh, sopan kamu nanya begitu?!"
+
+    c "udah gapapa kal, btw aku masih belum punya pacar ya"
+
+    "lu melihat muka beruk sebelah lu seperti beruk yang bahagia"
+
+    k "gile yo single dia, pepet gak sih ini mah?"
+
+    r "emang pada dasarnya beruk kebelet kawin lu mah"
+
+    k "yeuh lu sialan"
+
+    c "kamu ada yang mau ditanya lagi?"
+
+    k "ummm ad-"
+
+    k "....."
+
+    "tiba - tiba kel menghentikan kalimat selanjutnya"
+
+    "lu merasa heran tapi lu tau apa yang terjadi"
+
+    "ya, muka osis yang bernama haikal itu menatap kael dengan tatapan ingin menerkam mangsanya"
+
+    k "umm, gak ada deh kak hehe"
+
+    r "haha ciut dia ditatapin itu osis"
+
+    k "eh yo, ngeri banget jir tatapannya"
+
+    r "lu nanya yang aneh - aneh sih hahahaha"
+
+    k "brengsek lu"
+
+    "tiba tiba ada pengumuman yang nyuruh semua siswa kelas sepuluh berkumpul di lapangan"
     
+    k "hadeh apa lagisih ini"
+
+    r "gak tau gua juga, udah ah gc ke lapangan"
+
+    "akhirnya lu berdua menuju ke lapangan"
+
+    $ persistent.chapter_completed = max(persistent.chapter_completed, 2)
+    return
+
+
+
+
+
+
+
+
+
+
 
 
 

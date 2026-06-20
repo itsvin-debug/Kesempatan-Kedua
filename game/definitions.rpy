@@ -82,12 +82,15 @@ transform text_shake:
 
 # === ZOOM KHUSUS KARAKTER ===
 transform zoom_taishiro:
-    zoom 1.15
+    zoom 0.75
+    xpos 0
+    xanchor 0.0
     yalign 1.0
 
 # Karakter
+define t = Character("Kenzo", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
 define r = Character("Rio", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
-define c = Character("Cecan", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
+define c = Character("Cila", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
 define o = Character("Osis", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
 define k = Character("Kael", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
 define n = Character("narator", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
@@ -115,7 +118,7 @@ transform blink(delay):
 
 # Background images
 image bg BLACK = Solid("#00000000")
-image bg kelas = "bg/smp_classroom1_day1.png"
+image bg kelass = "bg/smp_classroom1_day1.png"
 image bg kelas_sore = "bg/smp_classroom1_evening1.png"
 image bg taman_sore = "bg/park_s1_evening.png"
 image bg opening = "bg/smp_classroom1_evening1.png"
@@ -127,6 +130,7 @@ image bg lorongkelas = "bg/school a hallway st2 day.png"
 image bg rooftop = "bg/school a s2st2 day.png"
 image bg jalan = "bg/city a s3st2 day.png"
 image bg rumahlisa = "bg/house a day.png"
+image bg kelas = "bg Classroom/Siang.png"
 
 # Character transforms (Zoom/Pos)
 transform zoom_satpam:
@@ -140,6 +144,19 @@ transform zoom_guru:
     yalign 0.1
 
 transform zoom_alice:
-    zoom 0.6
-    xalign 0
+    zoom 0.75
+    xpos 0
+    xanchor 0.0
+    yalign 1.0
+
+transform cila_left:
+    zoom 0.75
+    xpos 0
+    xanchor 0.0
+    yalign 1.0
+
+transform rio_left:
+    zoom 0.75
+    xpos 0
+    xanchor 0.0
     yalign 1.0

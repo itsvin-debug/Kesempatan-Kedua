@@ -2,11 +2,9 @@
 errors listed below, and try again.
 
 
-The label game_over2 is defined twice, at File "game/chapter1.rpy", line 360:
-label game_over2:
-and File "game/chapter1.rpy", line 373:
-label game_over2:
-
+File "game/chapter1.rpy", line 26: expected 'image_name_component' not found.
+    hide
+         ^
 
 Ren'Py Version: Ren'Py 8.5.3.26051504
-Sat Jun 13 19:43:17 2026
+Sat Jun 20 20:36:57 2026
