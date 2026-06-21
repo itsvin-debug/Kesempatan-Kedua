@@ -155,6 +155,17 @@ transform cila_left:
     xanchor 0.0
     yalign 1.0
 
+transform kael_left:
+    zoom 0.75
+    xpos 0
+    xanchor 0.0
+    yalign 1.0
+
+transform kael_left1:
+    zoom 1
+    xanchor 0.0
+    yalign 1.0
+
 transform rio_left:
     zoom 0.75
     xpos 0

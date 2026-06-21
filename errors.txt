@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/chapter1.rpy", line 26: expected 'image_name_component' not found.
-    hide
-         ^
+File "game/chapter1.rpy", line 378: expected 'simple_expression' not found.
+    show rio jengkel at
+                        ^
 
 Ren'Py Version: Ren'Py 8.5.3.26051504
-Sat Jun 20 20:36:57 2026
+Sun Jun 21 12:56:15 2026

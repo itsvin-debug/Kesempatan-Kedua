@@ -1,46 +1,36 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-NameError: name 't' is not defined
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "game/prolog.rpy", line 30, in script
-    t "perkenalkan, gw Kenzo Algahra sering dipanggil kenzo atau ken. gw berusia 17 tahun"
-Exception: Sayer 't' is not defined.
+  File "game/chapter1.rpy", line 56, in script
+    show rio jengkel at rio_
+  File "game/chapter1.rpy", line 56, in <module>
+    show rio jengkel at rio_
+                        ^^^^
+NameError: name 'rio_' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "renpy/ast.py", line 625, in eval_who
-    return renpy.python.py_eval(who)
-           ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "game/chapter1.rpy", line 56, in script
+    show rio jengkel at rio_
+  File "renpy/ast.py", line 1364, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/ast.py", line 726, in show_imspec
+    at_list = [renpy.python.py_eval(i) for i in at_list]
+               ~~~~~~~~~~~~~~~~~~~~^^^                  
   File "renpy/python.py", line 1308, in py_eval
     return py_eval_bytecode(code, globals, locals)
            ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
   File "renpy/python.py", line 1301, in py_eval_bytecode
     return eval(bytecode, globals, locals)
            ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<none>", line 1, in <module>
-NameError: name 't' is not defined
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "game/prolog.rpy", line 30, in script
-    t "perkenalkan, gw Kenzo Algahra sering dipanggil kenzo atau ken. gw berusia 17 tahun"
-  File "renpy/ast.py", line 2935, in execute
-    Say.execute(self)
-    ~~~~~~~~~~~^^^^^^
-  File "renpy/ast.py", line 956, in execute
-    who = eval_who(self.who, self.who_fast)
-          ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/ast.py", line 627, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 't' is not defined.
+  File "game/chapter1.rpy", line 56, in <module>
+    show rio jengkel at rio_
+                        ^^^^
+NameError: name 'rio_' is not defined
 
 Windows-11-10.0.26200-SP0 AMD64
 Ren'Py 8.5.3.26051504
 DREAM 1.0
-Sat Jun 20 12:56:56 2026
+Sun Jun 21 12:25:00 2026

@@ -19,11 +19,11 @@ label chapter1_start:
 
     "ada yang memukul pundak Rio dari belakang"
 
-    show rio shock at rio_left
+    show rio mengalihkan pandangan at rio_left
 
     r "eh-"
 
-    hide rio shock with dissolve
+    hide rio mengalihkan pandangan 
 
     "lu merasa tidak asing dengan tepukan itu"
 
@@ -31,39 +31,94 @@ label chapter1_start:
 
     "ada seorang pria yang tidak asing dikehidupanlu, ya itu sahabat lu sendiri yang bernama Kael"
 
+    show kael bicara at kael_left
+
     k "gilee, kita satu sekolah lagi nih"
+
+    hide kael ngomong biasa 
+
+    show rio senyum tipis at rio_left
+
+    r "...."
+
+    hide rio senyum tipis    
+
+    show rio bicara at rio_left
 
     r "ya"
 
+    hide rio bicara 
+    
     "Tanpa lu sadari muka lu tersenyum bahagia karena bisa lihat sahabat lu lagi"
 
+    show kael bicara at kael_left
+    
     k "dih stress lu ya? senyum sendiri gitu kek orang gila atau jangan jangan lu suka gu-"
+
+    hide kael ngomong biasa 
+
+    show rio jengkel at rio_left
 
     r "NAJIS GAKLAH GILA"
 
+    hide rio jengkel
+
+    show kael ketawa at kael_left1
+
     k "hahaha gua kira lu belok"
+
+    hide kael ketawa 
+    show kael bicara at kael_left
 
     k "tapi kenapa lu senyum senyum gitu?"
 
+    hide kael bicara 
+
+    show rio bahagia at rio_left
+
     r "akhirnya gua bisa liat lu lagi"
+
+    hide rio bahagia 
+
+    show kael bicara at kael_left
 
     k "maksudnya?"
 
+    hide kael bicara
+
     "Kael bertanya dengan wajah yang sedikit aneh"
+
+    show rio bicara at rio_left
 
     r "gapapa lupain aja, buru ah kedalem nanti telat kita"
 
-    "akhiirnya lu berdua lari ke sekolah itu"
+    hide rio bicara
+
+    "akhirnya lu berdua lari ke sekolah itu"
 
     o "CEPET DONG LAMA BANGET YANG TELAT AKAN DIHUKUM PUSH UP SERATUS KALI!!!"
 
     "muka osis itu terlihat sok garang dan suara yang sok tegar"
 
-    k "eh yo, liat deh tuh muka osis sok garang banget. bro berpikir sedang farming aura hahaha"
+    show kael bicara at kael_left
+
+    k "eh yo, liat deh tuh muka osis sok garang banget"
+
+    hide kael bicara
+
+    show kael ketawa at kael_left1
+    
+    "bro berpikir sedang farming aura hahaha"
+
+    hide kael ketawa
 
     "Kael mengejek osis itu namun dia tidak sadar kalau suaranya sangat keras"
 
+    show rio bicara at rio_left
+
     r "woi suara lu keras beg-"
+
+    hide rio bicara
 
     o "WOI KALIAN BERDUA!!"
 
@@ -71,19 +126,35 @@ label chapter1_start:
 
     "ternyata pendengaran osis itu sungguh tajam"
 
-    o "KALIAN BERDUA NGEJEK SAYA YA TADI?"
+    o "KALIAN BERDUA NGEJEK GUA YA TADI?"
+
+    show kael shock at kael_left
 
     k "eh-"
 
+    hide kael shock
+
+    show rio bengong at rio_left
+
     r "eh engg-"
+
+    hide rio bengong
 
     "lu panik tapi lu mencoba untuk menjawab"
 
+    show rio bicara at rio_left
+
     r "eh engga bang kita cuman ngobrol biasa"
+
+    hide rio bicara
 
     o "GAK USAH BOHONG LU PIKIR KUPING GUA TULI? CEPET LU BERDUA KESINI!!"  
 
+    show rio bicara at rio_left
+
     r "LAH KITAKAN GAK NGAPA NGAPAIN KOK KEDEPAN?"
+
+    hide rio bicara
 
     o "OH LU BERANI NGELAWAN? UDAH SOK JAGO LU SAMPE BERANI GINI?"
 
@@ -93,7 +164,11 @@ label chapter1_start:
 
     "namun tiba tiba..."
 
+    show rio heran at rio_left
+
     r "eh?"
+
+    hide rio heran 
 
     "lu balik ke masa sebelum kejadian lu ribut ama osis tersebut, lu masih bingung dan juga kaget kalau diri kenapa bisa balik ke masa itu"
 
@@ -103,17 +178,35 @@ label chapter1_start:
 
     o "WOI JANGAN MELAMUN LU"
 
+    show rio heran at rio_left
+
     r "eh?"
+
+    hide rio heran
+
+    show kael bicara at kael_left
 
     k "eh yo kok ngelamun sih"
 
+    hide kael bicara
+
+    
+
     o "WOI LU ITU YANG NGELAMUN"
+
+    show rio bicara at rio_left
 
     r "ya bang?"
 
+    hide rio bicara
+
     o "MAJU SINI MALAH BENGONG LU"
 
+    show rio bicara at rio_left
+
     r "loh kenapa maju kan kita gak ngapa ngapain?"
+
+    hide rio bicara
 
     o "Oh gitu ya?"
 
@@ -123,9 +216,13 @@ label chapter1_start:
 
     "sebelum lu sempat menjawab osis itu malah menarik tangan lu dan mendorongnya"
 
+    show rio bicara at rio_left
+
     r "ADUH!"
 
     r "APASIH LU BANG RESE BANGET"
+
+    hide rio bicara
 
     o "OH BERANI LAWAN YA?"
 
@@ -135,13 +232,22 @@ label chapter1_start:
 
     "muka lu terlihat bingung karena tidak mengerti maksud osis tersebut"
 
+    show rio bicara at rio_left
+
     r "hah?"
+
+    hide rio bicara
 
     o "UDAH SOK JAGO LU SAMPE BERANI GINI?!"
 
     "lu yang gak tahan akhirnya kepancing emosi"
 
+
+    show rio jengkel at rio_left
+
     r "APA LU BILANG? LU YANG SOK JAGO DISINI!!"
+
+    hide rio jengkel
 
     o "WAH BERANI NIH ORANG"
 
@@ -165,26 +271,46 @@ label ch1_checkpoint1:
     o "WOI CEPET SINI MALAH MELAMUN"
 
     "lu penasaran apa yang terjadi jika diri lu maju ke depan, akhirnya lu memutuskan untung maju ke depan"
+    
+    show rio bicara at rio_left
 
     r "ya bang?"
 
+    hide rio bicara
+
     o "PUSH UP SEKARANG LU BERDUA SEBANYAK 30 KALI"
+
+    show rio bicara at rio_left
 
     r "lah?"
 
     menu:
 
         "menolak perintah osis tersebut" if not ch1_failed_osis:
+
+            hide rio bicara
+
+            show rio bicara at rio_left
             
             r "lah ngapain push up? kita salah apa?"
 
+            hide rio bicara
+
             o "BANYAK ALESAN CEPET KERJAIN"
+
+            show rio jengkel at rio_left
 
             r "APASIH KITA KAN GAK NGAPA NGAPAIN KOK DISURUH PUSH UP?"
 
+            hide rio jengkel
+
             o "OH UDAH BERANI NGEBOHONG NIH?"
 
+            show rio bicara at rio_left
+
             r "GAK NGEBOHONG LU JUGA DARI TADI NYARI RIBUT"
+
+            hide rio bicara
 
             o "WAH BERANI BANGET NIH ORANG"
 
@@ -193,12 +319,22 @@ label ch1_checkpoint1:
             jump game_over1
 
         "ikutin perintah osis itu":
-            
+
             r "ya bang"
+
+            hide rio bicara
+
+            show kael bicara at kael_left
 
             k "eh yo gimana ini?"
 
+            hide kael bicara
+            
+            show rio bicara at rio_left
+
             r "udah ikutin aja"
+
+            hide rio bicara
 
             "akhirnya lu berdua ngelakuin apa yang osis tadi suruh"
 
@@ -220,14 +356,30 @@ label game_over1:
 label good_ending1:
 
     "walaupun lu menjadi pusat perhatian karena di hukum akhirnya lu berhasil menyelesaikan hukumannya dan lu disuruh baris ke belakang oleh osis itu"
+    
+    show kael muak at kael_left
 
     k "ck, sialan banget tuh osis"
 
+    hide kael muak
+
+    show rio jengkel at rio_left
+
     r "lu sendiri yang ngejek dia dongo"
+
+    hide rio jengkel
+
+    show kael bicara at kael_left
 
     k "ya masa kedengeran sih"
 
+    hide kael bicara
+    
+    show rio jengkel at rio_left
+
     r "ya kedengeran lah dongo lu suaranya berisik tadi sama kita tadi baris di depan"
+
+    hide rio jengkel
 
     "akhirnya setelah selesai lu sekarang pembagian gugus dan lu berdua sekelas lagi"
 
