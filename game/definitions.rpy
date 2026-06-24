@@ -90,7 +90,7 @@ transform zoom_taishiro:
 # Karakter
 define t = Character("Kenzo", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
 define r = Character("Rio", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
-define c = Character("Cila", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
+define e = Character("Elina", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
 define o = Character("Osis", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
 define k = Character("Kael", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
 define n = Character("narator", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)

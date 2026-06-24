@@ -11,7 +11,7 @@ label chapter1_start:
 
     "setelah sampai disekolah, lu parkir terlebih dahulu motornya dan mulai memasuki gerbang sekolah"
 
-    "Rio berjalan dengan muka yang sangat bahagia"
+    "lu berjalan dengan muka yang sangat bahagia"
 
     "saat sedang asik jalan jalan tiba tiba...."
 
@@ -23,7 +23,7 @@ label chapter1_start:
 
     r "eh-"
 
-    hide rio mengalihkan pandangan 
+    hide rio mengalihkan pandangan with dissolve
 
     "lu merasa tidak asing dengan tepukan itu"
 
@@ -47,7 +47,7 @@ label chapter1_start:
 
     r "ya"
 
-    hide rio bicara 
+    hide rio bicara with dissolve
     
     "Tanpa lu sadari muka lu tersenyum bahagia karena bisa lihat sahabat lu lagi"
 
@@ -57,11 +57,11 @@ label chapter1_start:
 
     hide kael ngomong biasa 
 
-    show rio jengkel at rio_left
+    show rio ngegass at rio_left
 
     r "NAJIS GAKLAH GILA"
 
-    hide rio jengkel
+    hide rio ngegass
 
     show kael ketawa at kael_left1
 
@@ -84,7 +84,7 @@ label chapter1_start:
 
     k "maksudnya?"
 
-    hide kael bicara
+    hide kael bicara with dissolve
 
     "Kael bertanya dengan wajah yang sedikit aneh"
 
@@ -92,7 +92,7 @@ label chapter1_start:
 
     r "gapapa lupain aja, buru ah kedalem nanti telat kita"
 
-    hide rio bicara
+    hide rio bicara with dissolve
 
     "akhirnya lu berdua lari ke sekolah itu"
 
@@ -110,15 +110,15 @@ label chapter1_start:
     
     "bro berpikir sedang farming aura hahaha"
 
-    hide kael ketawa
+    hide kael ketawa with dissolve
 
     "Kael mengejek osis itu namun dia tidak sadar kalau suaranya sangat keras"
 
-    show rio bicara at rio_left
+    show rio ngegass at rio_left
 
     r "woi suara lu keras beg-"
 
-    hide rio bicara
+    hide rio ngegass 
 
     o "WOI KALIAN BERDUA!!"
 
@@ -138,7 +138,7 @@ label chapter1_start:
 
     r "eh engg-"
 
-    hide rio bengong
+    hide rio bengong with dissolve
 
     "lu panik tapi lu mencoba untuk menjawab"
 
@@ -168,7 +168,7 @@ label chapter1_start:
 
     r "eh?"
 
-    hide rio heran 
+    hide rio heran with dissolve
 
     "lu balik ke masa sebelum kejadian lu ribut ama osis tersebut, lu masih bingung dan juga kaget kalau diri kenapa bisa balik ke masa itu"
 
@@ -186,11 +186,9 @@ label chapter1_start:
 
     show kael bicara at kael_left
 
-    k "eh yo kok ngelamun sih"
+    k "{eh yo kok ngelamun sih}"
 
-    hide kael bicara
-
-    
+    hide kael bicara   
 
     o "WOI LU ITU YANG NGELAMUN"
 
@@ -298,19 +296,23 @@ label ch1_checkpoint1:
 
             o "BANYAK ALESAN CEPET KERJAIN"
 
-            show rio jengkel at rio_left
+            show rio marah at rio_left
+
+            hide rio marah
+
+            show rio ngegass at rio_left
 
             r "APASIH KITA KAN GAK NGAPA NGAPAIN KOK DISURUH PUSH UP?"
 
-            hide rio jengkel
+            hide rio ngegass
 
             o "OH UDAH BERANI NGEBOHONG NIH?"
 
-            show rio bicara at rio_left
+            show rio ngegass at rio_left
 
             r "GAK NGEBOHONG LU JUGA DARI TADI NYARI RIBUT"
 
-            hide rio bicara
+            hide rio ngegass
 
             o "WAH BERANI BANGET NIH ORANG"
 
@@ -386,29 +388,69 @@ label good_ending1:
     scene bg kelas
     with fade
 
+    show kael bicara at kael_left
+
     r "yah gila udah satu sekolah sekarang satu gugus lagi, heran dah gua"
+
+    hide rio bicara
+
+    show kael bicara at kael_left
 
     k "sama gua juga heran, takdir kali bareng my sahabat mana duduknya sebelahan lagi"
 
+    hide kael bicara
+
+    show rio jengkel at rio_left
+
+    hide rio jengkel
+
+    show rio ngegass at rio_left
+
     r "huekk cuh, sahabat macam apa ini yang buat sahabatnya sendiri kena hukum"
+
+    hide rio bicara
+
+    show kael bicara at kael_left
 
     k "ya itu mah osisnya aja yang gak jelas"
 
+    hide kael bicara
+
+    show rio bicara at rio_left
+
     r "ah lu samanya jugalah"
+
+    hide rio bicara with dissolve
 
     "setelah lama lama berbincang akhirnya pebimbing gugus lu datang"
 
     "dan apesnya pebimbing lu osis yang tadi"
 
+    show kael kecewa at kael_left
+
+    hide kael kecewa
+
+    show kael bicara at kael_left
+
     k "yahh- kok dia sih"
 
+    hide kael bicara
+
+    show rio heran at rio_left
+
     r "..."
+
+    hide rio heran
 
     o "oke kalian semua diam dulu, gua ama temen gua mau kenalin diri cuman temen gua ini masih belum kesini kemungkinan nanti dia nyusul"
 
     o "kenalin nama gua haikal haraka, gua pebimbing gugus ini yaitu gugus 3"
 
+    show kael kesal at kael_left
+
     k "ah bodoamat nama lu siapa kek"
+
+    hide kael kesal
 
     "lu ngedenger suara samar - samar kalau beruk sebelah lu lagi bergumam"
 
@@ -418,27 +460,43 @@ label good_ending1:
 
     "tanpa lu sadari sekarang beruk sebelah lu yang mulai perkenalan diri"
 
+    show kael bicara at kael_left
+
     k "e-e-e-e kenalin nama gua Kael.."
+
+    hide kael bicara with dissolve
 
     "Lu gak peduli tapi ada satu hal yang mengganjal"
 
     "yaitu muka osis itu terlihat sinis dan seperti tersenyum tipis seperti memiliki rencana jahat"
 
-    r "wah sial, nih osis dendam kayaknya"
+    show kael bicara at kael_left
+
+    r "(wah sial, nih osis dendam kayaknya)"
+
+    hide kael bicara with dissolve
 
     "sekarang giliran lu perkenalan diri. Lu mulai ngenalin diri seperti biasa namun setelah selesai mengenalkan diri..."
-
+    
     o "oh namanya Kael dan rio"
 
     "walaupun nada osis itu pelan tapi lu ngedenger yang dia bicarain"
 
-    k "eh yo, kayaknya tuh osis dendam deh ama kita"
+    show kael bicara at kael_left
+
+    k "{eh yo, kayaknya tuh osis dendam deh ama kita}"
+
+    hide kael bicara
+
+    show rio bicara at rio_left
 
     r "ya gua juga tau"
 
+    hide rio bicara
+
     "namun di tengah sesi perkenalan tiba - tiba"
 
-    c "permisi, boleh saya masuk?"
+    e "permisi, boleh saya masuk?"
 
     o "...."
 
@@ -450,19 +508,57 @@ label good_ending1:
 
     "dan beruk sebelah lu jelas kayak cacing kepanasan"
 
+
+
     k "woi yo, gile tuh kakak kelas cantik amat jir. Apakah ini my bini gue?"
 
     r "stress lu setiap ketemu cewek cantik pasti kek gini"
 
-    k "jelaslah masa lu gak tertarik? jangan jangan lu sukanya cow-"
+    show kael bicara at kael_left
+
+    k "jelaslah masa lu gak tertarik?"
+
+    hide kael bicara
+
+    show kael shock at kael_left
+
+    hide kael shock
+
+    show kael bicara at kael_left
+    
+    k "jangan jangan lu sukanya cow-"
+
+    hide kael shock with dissolve
 
     "lu megang pundak Kael"
 
-    r "denger baik - baik ya sat, gua ini masih suka cewek gua gak tertarik bukan berarti gua belok. Mending lu sadar diri dah kalau lu di depan cermin yang keluar bukan manusia tapi bekantan"
+    show rio jengkel at rio_left
+    
+    hide rio jengkel
 
-    k "wah sialan lu asu, mana ada sesama ras saling ngatain hahaha"
+    show rio ngegass at rio_left
+
+    r "denger baik - baik ya sat, gua ini masih suka cewek gua gak tertarik bukan berarti gua belok. Mending lu sadar diri dah kalau lu di depan cermin yang keluar bukan manusia tapi bekantan"
+    
+    hide rio ngegass
+
+    show kael bicara at kael_left
+
+    k "wah sialan lu asu, mana ada sesama ras saling ngatain"
+
+    hide kael bicara
+
+    show kael ketawa at kael_left
+    
+    k "hahaha"
+
+    hide kael ketawa
+
+    show rio ketawa at rio_left
 
     r "hahaha"
+
+    hide rio ketawa
 
     label ch1_checkpoint2:
 
@@ -470,23 +566,46 @@ label good_ending1:
 
     "lu berdua reflek menoleh ke arah sumber suara tersebut"
 
+    show kael marah at kael_left
+
     k "yah dia marah lagi, lagi pms bukan sih"
+
+    hide kael marah
+
+    show rio bicara at rio_left
 
     r "gak tau gua juga, tapi kayaknya iya deh"
 
+    hide rio bicara
+
     o "LU BERDUA DARI TADI NGOBROL MULU GUA PERHATIIN"
 
+    show rio bengong at rio_left
+
     r "...."
+
+    hide rio bengong
 
     menu :
 
         "bentak balik osis itu" if not ch1_failed1:
 
-            r "KITA GAK NGOBROL LU SENSI AMAT SIH JADI ORANG, PERSONAL LU? MENTANG - MENTANG OSIS LU JADI BISA MARAH - MARAH GITU?"
+            show rio marah at rio_left
 
+            hide rio marah
+
+            show rio ngegass
+
+            r "KITA GAK NGOBROL LU SENSI AMAT SIH JADI ORANG, PERSONAL LU? MENTANG - MENTANG OSIS LU JADI BISA MARAH - MARAH GITU?"
+            
+            hide rio ngegass
             o "SONGONG YA LU MASIH BARU JUGA"
 
+            show rio ngegass at rio_left
+
             r "YA LU DARI TADI MANCING EMOSI MULU"
+
+            hide rio ngegass with dissolve
 
             "akhirnya lu berdua debat dan adu bacot"
 
@@ -494,12 +613,24 @@ label good_ending1:
             jump game_over2
 
         "minta maaf ama osis itu":
+
+            show rio bicara at rio_left
             
             r "ya bang maaf"
 
+            hide rio bicara
+
+            show kael bicara at kael_left
+
             k "ya gua juga minta maaf bang"
 
+            hide kael bicara
+
+            show rio bicara at rio_left
+
             r "udah ikutin aja"
+
+            hide rio bicara
 
             "akhirnya lu berdua ngelakuin apa yang osis tadi suruh"
 
@@ -544,17 +675,25 @@ label game_over3:
 
 label good_ending2:
 
-    c "udah - udah kal namanya juga masa perkenalan, biarin ajalah mereka kenalan"
+    e "udah - udah kal namanya juga masa perkenalan, biarin ajalah mereka kenalan"
 
     o "hhh, iya - iya"
 
-    k "jinak jir dia"
+    show kael bicara at kael_left
 
-    r "udah ah diem"
+    k "{jinak jir dia}"
+
+    hide kael bicara
+
+    show rio bicara at rio_left
+
+    r "{udah ah diem}"
+
+    hide rio bicara with dissolve
 
     "sekarang osis cewek itu mulai perkenalan diri"
 
-    c "halo perkenalkan nama aku Cila amelia aku kelasnya di 10 ipa 2"
+    e "halo perkenalkan nama aku Cila amelia aku kelasnya di 10 ipa 2"
 
     "spontan semua bilang salam kenal"
 
@@ -562,33 +701,69 @@ label good_ending2:
 
     "gebrakan beruk sebelah lu ada lagi"
 
-    o "kak aku mau nanya"
+    show kael bicara at kael_left
 
-    c "boleh, mau nanya apa?"
+    k "kak aku mau nanya"
+
+    hide kael bicara
+
+    e "boleh, mau nanya apa?"
+
+    show kael bicara at kael_left
 
     k "kak udah ada pacar belum?"
 
+    hide kael bicara with dissolve
+
     "seisi ruangan spontan melihat kael termasuk lu"
 
-    r "hadehhh ada aja gebrakannya"
+    show rio menghela nafas at rio_left
+
+    hide rio menghela nafas
+
+    show rio bicara at rio_left
+
+    r "{hadehhh ada aja gebrakannya}"
+
+    hide rio bicara
 
     o "heh, sopan kamu nanya begitu?!"
 
-    c "udah gapapa kal, btw aku masih belum punya pacar ya"
+    e "udah gapapa kal, btw aku masih belum punya pacar ya"
 
     "lu melihat muka beruk sebelah lu seperti beruk yang bahagia"
 
-    k "gile yo single dia, pepet gak sih ini mah?"
+    show kael bicara at kael_left
+
+    k "{gile yo single dia, pepet gak sih ini mah?}"
+
+    hide kael bicara
+
+    show rio bicara at rio_left
 
     r "emang pada dasarnya beruk kebelet kawin lu mah"
 
+    hide rio bicara
+
+    show kael bicara at kael_left
+
     k "yeuh lu sialan"
 
-    c "kamu ada yang mau ditanya lagi?"
+    hide kael bicara
+
+    e "kamu ada yang mau ditanya lagi?"
+
+    show kael bicara at kael_left
 
     k "ummm ad-"
 
+    hide kael bicara
+
+    show kael shock at kael_left
+
     k "....."
+
+    hide kael shock with dissolve
 
     "tiba - tiba kel menghentikan kalimat selanjutnya"
 
@@ -596,21 +771,49 @@ label good_ending2:
 
     "ya, muka osis yang bernama haikal itu menatap kael dengan tatapan ingin menerkam mangsanya"
 
+    show kael bicara 
+
     k "umm, gak ada deh kak hehe"
 
-    r "haha ciut dia ditatapin itu osis"
+    hide kael bicara
 
-    k "eh yo, ngeri banget jir tatapannya"
+    show rio ketawa at rio_left
 
-    r "lu nanya yang aneh - aneh sih hahahaha"
+    r "{haha ciut dia ditatapin itu osis}"
 
-    k "brengsek lu"
+    hide rio ketawa
+
+    show kael bicara at kael_left
+
+    k "{eh yo, ngeri banget jir tatapannya}"
+
+    hide kael bicara
+
+    show rio bicara at rio_left
+
+    r "{lu nanya yang aneh - aneh sih hahahaha}"
+
+    hide rio bicara
+
+    show kael bicara at kael_left
+
+    k "{brengsek lu}"
+
+    hide kael bicara with dissolve
 
     "tiba tiba ada pengumuman yang nyuruh semua siswa kelas sepuluh berkumpul di lapangan"
+
+    show kael muak at kael_left
     
-    k "hadeh apa lagisih ini"
+    k "hadeh apa lagi sih ini"
+
+    hide kael muak
+
+    show rio bicara at rio_left
 
     r "gak tau gua juga, udah ah gc ke lapangan"
+
+    hide rio bicara at rio_left
 
     "akhirnya lu berdua menuju ke lapangan"
 

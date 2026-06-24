@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/chapter1.rpy", line 378: expected 'simple_expression' not found.
-    show rio jengkel at
-                        ^
+File "game/chapter1.rpy", line 816: expected 'simple_expression' not found.
+    hide rio bicara at
+                      ^
 
 Ren'Py Version: Ren'Py 8.5.3.26051504
-Sun Jun 21 12:56:15 2026
+Mon Jun 22 20:37:29 2026
