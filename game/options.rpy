@@ -187,6 +187,7 @@ init python:
     build.classify('**/.**', None)
     build.classify('**/#**', None)
     build.classify('**/thumbs.db', None)
+    build.classify('dist/**', None)
 
     ## Untuk mengarsipkan file, mengklasifikasikannya sebagai 'archive'.
 
@@ -229,3 +230,11 @@ init python:
         config.keymap['rollback'].remove('mousedown_4')
     if 'mousedown_5' in config.keymap['rollforward']:
         config.keymap['rollforward'].remove('mousedown_5')
+
+    # Memaksa game agar memenuhi layar penuh (full screen) di Android tanpa black bar
+    if renpy.android:
+        def force_fullscreen_android(width, height):
+            return (width, height)
+        config.adjust_view_size = force_fullscreen_android
+
+define config.default_fullscreen = True

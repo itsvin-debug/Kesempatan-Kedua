@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/chapter1.rpy", line 816: expected 'simple_expression' not found.
-    hide rio bicara at
-                      ^
+File "game/chapter1.rpy", line 487: end of line expected.
+    k "(eh yo, kayaknya tuh osis dendam deh ama kita)"sdw
+                                                      ^
 
 Ren'Py Version: Ren'Py 8.5.3.26051504
-Mon Jun 22 20:37:29 2026
+Sun Jul  5 13:54:36 2026

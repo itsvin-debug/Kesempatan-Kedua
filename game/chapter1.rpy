@@ -186,7 +186,7 @@ label chapter1_start:
 
     show kael bicara at kael_left
 
-    k "{eh yo kok ngelamun sih}"
+    k "eh yo kok ngelamun sih"
 
     hide kael bicara   
 
@@ -484,7 +484,7 @@ label good_ending1:
 
     show kael bicara at kael_left
 
-    k "{eh yo, kayaknya tuh osis dendam deh ama kita}"
+    k "(eh yo, kayaknya tuh osis dendam deh ama kita)"
 
     hide kael bicara
 
@@ -681,13 +681,13 @@ label good_ending2:
 
     show kael bicara at kael_left
 
-    k "{jinak jir dia}"
+    k "(jinak jir dia)"
 
     hide kael bicara
 
     show rio bicara at rio_left
 
-    r "{udah ah diem}"
+    r "(udah ah diem)"
 
     hide rio bicara with dissolve
 
@@ -723,7 +723,7 @@ label good_ending2:
 
     show rio bicara at rio_left
 
-    r "{hadehhh ada aja gebrakannya}"
+    r "(hadehhh ada aja gebrakannya)"
 
     hide rio bicara
 
@@ -735,7 +735,7 @@ label good_ending2:
 
     show kael bicara at kael_left
 
-    k "{gile yo single dia, pepet gak sih ini mah?}"
+    k "(gile yo single dia, pepet gak sih ini mah?)"
 
     hide kael bicara
 
@@ -779,25 +779,25 @@ label good_ending2:
 
     show rio ketawa at rio_left
 
-    r "{haha ciut dia ditatapin itu osis}"
+    r "(haha ciut dia ditatapin itu osis)"
 
     hide rio ketawa
 
     show kael bicara at kael_left
 
-    k "{eh yo, ngeri banget jir tatapannya}"
+    k "(eh yo, ngeri banget jir tatapannya)"
 
     hide kael bicara
 
     show rio bicara at rio_left
 
-    r "{lu nanya yang aneh - aneh sih hahahaha}"
+    r "{{lu nanya yang aneh - aneh sih hahahaha}}"
 
     hide rio bicara
 
     show kael bicara at kael_left
 
-    k "{brengsek lu}"
+    k "{{brengsek lu}}"
 
     hide kael bicara with dissolve
 
@@ -813,22 +813,9 @@ label good_ending2:
 
     r "gak tau gua juga, udah ah gc ke lapangan"
 
-    hide rio bicara at rio_left
+    hide rio bicara
 
     "akhirnya lu berdua menuju ke lapangan"
 
     $ persistent.chapter_completed = max(persistent.chapter_completed, 2)
     return
-
-
-
-
-
-
-
-
-
-
-
-
-
