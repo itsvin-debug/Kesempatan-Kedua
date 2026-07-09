@@ -1,16 +1,22 @@
 # Data chapter: list of dicts dengan title, description, dan image untuk setiap chapter
 default chapters = [
     {
-        "title": _("Prolog: Kehidupan yang kelam"),
-        "description": _("Lu hanya seorang pengedar barang terlarang yang pensiun dari kerjaanlu. namun keberhentian lu malah membuat lu kena malapetaka"),
+        "title": _("Buku: Awal Mula"),
+        "description": _("Lu dulu bekerja di perusahaan gelap yang menjual barang ilegal dan lu berhenti dari pekerjaan itu. Namun keberhentian lu malah membuat masalah besar"),
         "image": "images/bg/apartment a exterior day.png",
         "label": "prolog_start"
     },
     {
-        "title": _("Chapter 2: Perubahan pertama"),
+        "title": _("Buku 1: Awal Perubahan"),
+        "description": _("Entah kenapa lu balik ke masa - masa SMA lu, lu masih belum mengerti apa yang terjadi namun ini adalah kesempatan lu untuk merubah kehidupan menjadi lebih baik"),
+        "image": "images/bg/apartment a exterior day.png",
+        "label": "chapter1_start"
+    },
+    {
+        "title": _("Buku 3: "),
         "description": _("kejadian yang tidak terduga, lu pikir akan mati tapi malah balik ke masa lalu, apakah ini keajaiban untuk lu merubah diri dan kembali ke jalan yang lurus?"),
         "image": "images/chapter2.png",
-        "label": "chapter1_start"
+        "label": "chapter2_start"
     },
     {
         "title": _("Chapter 3: the first step in yor life"),
@@ -87,6 +93,12 @@ transform zoom_taishiro:
     xanchor 0.0
     yalign 1.0
 
+# === WARNA PER KARAKTER ===
+# Setiap karakter memiliki warna khas masing-masing pada dialog box.
+# Kenzo: Oranye (#f83e00) | Rio: Biru (#1fa0e0) | Kael: Merah-pink (#cc3355)
+# Lisa: Pink (#e0407a) | Satpam: Biru tua (#4a6ae6) | Pak Agus: Hijau (#33cc55)
+# Osis: Ungu (#9b59b6) | Elina: Kuning emas (#f5b800) | narator: Merah-pink (#cc3355)
+
 # Karakter
 define t = Character("Kenzo", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
 define r = Character("Rio", color="#ffffff", what_slow_cps=20, callback=typewriter_callback)
@@ -116,21 +128,13 @@ transform blink(delay):
     pause delay
     repeat
 
-# Background images
-image bg BLACK = Solid("#00000000")
-image bg kelass = "bg/smp_classroom1_day1.png"
-image bg kelas_sore = "bg/smp_classroom1_evening1.png"
-image bg taman_sore = "bg/park_s1_evening.png"
-image bg opening = "bg/smp_classroom1_evening1.png"
-image bg kamartidurkarakteru = "bg/personal room c day.png"
-image bg sekolahgrtutup = "bg/smp_front_day3c.png"
-image bg gerbangkelas = "bg/smp_classroom4_day2.png"
-image bg tanggakelas = "bg/school a stairs st2 day.png"
-image bg lorongkelas = "bg/school a hallway st2 day.png"
-image bg rooftop = "bg/school a s2st2 day.png"
-image bg jalan = "bg/city a s3st2 day.png"
-image bg rumahlisa = "bg/house a day.png"
-image bg kelas = "bg Classroom/Siang.png"
+
+image bg kelas_siang = "bg/kelas siang.png"
+image bg kelas_sore = "bg/kelas sore.png"
+image bg kelas_malam = "bg/kelas malam.png"
+
+image cutscene balkon = im.Scale("images/cutscene/balkon.png", 1920, 1080)
+image bg balkon = im.Scale("images/bg/balkon.png", 1920, 1080)
 
 # Character transforms (Zoom/Pos)
 transform zoom_satpam:

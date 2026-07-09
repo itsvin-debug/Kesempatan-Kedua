@@ -257,7 +257,8 @@ label chapter2_start:
 label game_over6:
     scene bg BLACK
     with fade
-    play sound "marioGV.mp3"
+    stop music fadeout 0.5
+    play sound "audio/marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
     n "si bro pemalas banget udah gak ikut basket balik lagi kerumah"
     n "lu balik juga mau ngapain? main HP? kagak guna"
@@ -265,38 +266,49 @@ label game_over6:
     n "udah sono coba lagi gak usah maless"
     menu:
         "Memulai Ulang (Restart)":
+            hide text
+            play music "audio/BACKSOUNDKKC.mp3" volume 0.1 fadein 0.5
             jump start
         "Kembali ke Lobby (Main Menu)":
+            hide text
             return
     with fade
 
 label game_over7:
     scene bg BLACK
     with fade
-    play sound "marioGV.mp3"
+    stop music fadeout 0.5
+    play sound "audio/marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
     n "waduh NT banget, walaupun lagi buru buru minimal tawarin jalan bareng ke gerbang bukannya ninggalin"
     n "gak peka emang nih orang"
     n "coba lagi biar peka jadi orang"
     menu:
         "Memulai Ulang (Restart)":
+            hide text
+            play music "audio/BACKSOUNDKKC.mp3" volume 0.1 fadein 0.5
             jump start
         "Kembali ke Lobby (Main Menu)":
+            hide text
             return
     with fade
 
 label game_over8:
     scene bg BLACK
     with fade
-    play sound "marioGV.mp3"
+    stop music fadeout 0.5
+    play sound "audio/marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
     n "kebangetan nih orang udah ngebohong, bolos basket, ninggalin temen lu lagi"
     n "itu temen lu nungguin lu, parah sih di PHP gak respect banget"
     n "mikir kids, coba belajar respect ama jangan bohong sana"
     menu:
         "Memulai Ulang (Restart)":
+            hide text
+            play music "audio/BACKSOUNDKKC.mp3" volume 0.1 fadein 0.5
             jump start
         "Kembali ke Lobby (Main Menu)":
+            hide text
             return
     with fade
 
@@ -537,22 +549,27 @@ label good_ending4 :
 label game_over9:
     scene bg BLACK
     with fade
-    play sound "marioGV.mp3"
+    stop music fadeout 0.5
+    play sound "audio/marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
     n "aduh, pikir pikir dulu dong udah tau macet panjang yakali lu lewat jalan pintas yang ujungnya lewat jalan yang sama"
     n "ya jelas masih macetlah, kan lu liat sendiri macetnya kayak kereta"
     n "dan parahnya lagi lu gak bisa putar balik"
     menu:
         "Memulai Ulang (Restart)":
+            hide text
+            play music "audio/BACKSOUNDKKC.mp3" volume 0.1 fadein 0.5
             jump start
         "Kembali ke Lobby (Main Menu)":
+            hide text
             return
     with fade
 
 label game_over10:
     scene bg BLACK
     with fade
-    play sound "marioGV.mp3"
+    stop music fadeout 0.5
+    play sound "audio/marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
     n "wkwkwk si bro masih sabar dalam menghadapi macet"
     n "lu mau nunggu kapan kalau macet panjang "
@@ -560,23 +577,30 @@ label game_over10:
     n "coba lagi tuan penyabar"
     menu:
         "Memulai Ulang (Restart)":
+            hide text
+            play music "audio/BACKSOUNDKKC.mp3" volume 0.1 fadein 0.5
             jump start
         "Kembali ke Lobby (Main Menu)":
+            hide text
             return
     with fade
 
 label game_over11:
     scene bg BLACK
     with fade
-    play sound "marioGV.mp3"
+    stop music fadeout 0.5
+    play sound "audio/marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
     n "bagus sih ke warung makan dulu daripada nunggu macet"
     n "tapi yang gak bagusnya lu ngobrol sampe lupa waktu. Apalagi ada temen lu nungguin di tempat ekskul"
     n "coba lagi"
     menu:
         "Memulai Ulang (Restart)":
+            hide text
+            play music "audio/BACKSOUNDKKC.mp3" volume 0.1 fadein 0.5
             jump start
         "Kembali ke Lobby (Main Menu)":
+            hide text
             return
     with fade
 

@@ -81,7 +81,7 @@ label chapter1_start:
     hide rio bahagia 
 
     show kael bicara at kael_left
-
+    
     k "maksudnya?"
 
     hide kael bicara with dissolve
@@ -150,11 +150,11 @@ label chapter1_start:
 
     o "GAK USAH BOHONG LU PIKIR KUPING GUA TULI? CEPET LU BERDUA KESINI!!"  
 
-    show rio bicara at rio_left
+    show rio ngegass at rio_left
 
     r "LAH KITAKAN GAK NGAPA NGAPAIN KOK KEDEPAN?"
 
-    hide rio bicara
+    hide rio ngegass
 
     o "OH LU BERANI NGELAWAN? UDAH SOK JAGO LU SAMPE BERANI GINI?"
 
@@ -214,13 +214,13 @@ label chapter1_start:
 
     "sebelum lu sempat menjawab osis itu malah menarik tangan lu dan mendorongnya"
 
-    show rio bicara at rio_left
+    show rio ngegass at rio_left
 
     r "ADUH!"
 
     r "APASIH LU BANG RESE BANGET"
 
-    hide rio bicara
+    hide rio ngegass
 
     o "OH BERANI LAWAN YA?"
 
@@ -241,11 +241,11 @@ label chapter1_start:
     "lu yang gak tahan akhirnya kepancing emosi"
 
 
-    show rio jengkel at rio_left
+    show rio ngegass at rio_left
 
     r "APA LU BILANG? LU YANG SOK JAGO DISINI!!"
 
-    hide rio jengkel
+    hide rio ngegass
 
     o "WAH BERANI NIH ORANG"
 
@@ -264,7 +264,7 @@ label chapter1_start:
     "dan kesimpulan liar lu itu benar ternyata"
 
 label ch1_checkpoint1:
-    scene bg sekolahgrtutup
+    scene bg dalam lapangan
     with fade
     o "WOI CEPET SINI MALAH MELAMUN"
 
@@ -345,13 +345,17 @@ label ch1_checkpoint1:
 label game_over1:
     scene bg BLACK
     with fade
-    play sound "marioGV.mp3"
+    stop music fadeout 0.5
+    play sound "audio/marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
     n "waduh bro jangan ribut ama osis mending kita turutin aja apa yang dia suruh, jangan keras kepala nanti alhasil lu malah ribut lagi"
     menu:
         "Memulai Ulang (Restart)":
+            hide text
+            play music "audio/backsoundgame.mp3" volume 0.1 fadein 0.5
             jump ch1_checkpoint1
         "Kembali ke Lobby (Main Menu)":
+            hide text
             return
     with fade
 
@@ -383,9 +387,9 @@ label good_ending1:
 
     hide rio jengkel
 
-    "akhirnya setelah selesai lu sekarang pembagian gugus dan lu berdua sekelas lagi"
-
-    scene bg kelas
+    "akhirnya setelah selesai lu sekarang pembagian gugus dan lu berdua sekelas lagi"\
+    
+    scene bg kelas_siang
     with fade
 
     show kael bicara at kael_left
@@ -478,7 +482,7 @@ label good_ending1:
 
     "sekarang giliran lu perkenalan diri. Lu mulai ngenalin diri seperti biasa namun setelah selesai mengenalkan diri..."
     
-    o "oh namanya Kael dan rio"
+    o "(oh namanya Kael dan rio)"
 
     "walaupun nada osis itu pelan tapi lu ngedenger yang dia bicarain"
 
@@ -508,8 +512,6 @@ label good_ending1:
 
     "dan beruk sebelah lu jelas kayak cacing kepanasan"
 
-
-
     k "woi yo, gile tuh kakak kelas cantik amat jir. Apakah ini my bini gue?"
 
     r "stress lu setiap ketemu cewek cantik pasti kek gini"
@@ -538,7 +540,7 @@ label good_ending1:
 
     show rio ngegass at rio_left
 
-    r "denger baik - baik ya sat, gua ini masih suka cewek gua gak tertarik bukan berarti gua belok. Mending lu sadar diri dah kalau lu di depan cermin yang keluar bukan manusia tapi bekantan"
+    r "denger baik - baik ya monyet afrika, gua ini masih suka cewek gua gak tertarik bukan berarti gua belok. Mending lu sadar diri dah kalau lu di depan cermin yang keluar bukan manusia tapi bekantan"
     
     hide rio ngegass
 
@@ -649,26 +651,34 @@ label good_ending1:
 label game_over2:
     scene bg BLACK
     with fade
-    play sound "marioGV.mp3"
+    stop music fadeout 0.5
+    play sound "audio/marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
     n "waduh bro jangan ribut ama osis mending kita turutin aja apa yang dia suruh, jangan keras kepala nanti alhasil lu malah ribut lagi"
     menu:
         "Memulai Ulang (Restart)":
+            hide text
+            play music "audio/backsoundgame.mp3" volume 0.1 fadein 0.5
             jump ch1_checkpoint2
         "Kembali ke Lobby (Main Menu)":
+            hide text
             return
     with fade
 
 label game_over3:
     scene bg BLACK
     with fade
-    play sound "marioGV.mp3"
+    stop music fadeout 0.5
+    play sound "audio/marioGV.mp3"
     show text "{color=#ff0000}{size=200}GAME OVER{/size}{/color}" at game_over_pos
     n "waduh gila dihajar gak tuh osisnya, chill aja bro yang ada kalau lu hajar itu osis lu bakal dimusuhin sama semua osis. Hadeh"
     menu:
         "Memulai Ulang (Restart)":
+            hide text
+            play music "audio/backsoundgame.mp3" volume 0.1 fadein 0.5
             jump ch1_checkpoint2
         "Kembali ke Lobby (Main Menu)":
+            hide text
             return
     with fade
 
@@ -693,7 +703,7 @@ label good_ending2:
 
     "sekarang osis cewek itu mulai perkenalan diri"
 
-    e "halo perkenalkan nama aku Cila amelia aku kelasnya di 10 ipa 2"
+    e "halo perkenalkan nama aku elina amelia aku kelasnya di 10 ipa 2"
 
     "spontan semua bilang salam kenal"
 
@@ -791,13 +801,13 @@ label good_ending2:
 
     show rio bicara at rio_left
 
-    r "{{lu nanya yang aneh - aneh sih hahahaha}}"
+    r "(lu nanya yang aneh - aneh sih)"
 
     hide rio bicara
 
     show kael bicara at kael_left
 
-    k "{{brengsek lu}}"
+    k "(brengsek lu)"
 
     hide kael bicara with dissolve
 
@@ -816,6 +826,11 @@ label good_ending2:
     hide rio bicara
 
     "akhirnya lu berdua menuju ke lapangan"
+
+    scene bg dalam lapangan
+    with fade
+
+    
 
     $ persistent.chapter_completed = max(persistent.chapter_completed, 2)
     return
